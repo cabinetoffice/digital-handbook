@@ -2,17 +2,9 @@
 
 ## Contributing
 
-### Making documentation changes (using the Github interface)
-
-At the bottom of each page of the [hosted GDS Way](https://gds-way.digital.cabinet-office.gov.uk/) there is a `View source` link. This link will take you to to the corresponding [Github](https://github.com/alphagov/gds-way) page where you can use the pencil icon (:pencil:) in the interface to propose edits to a page.
-
-Once you have made your changes you can write a description, click the green `Propose changes` button, and on the following page clickj the green `Create pull request` button.
-
-### Making documentation changes (locally)
+### Making documentation changes
 
 To make changes edit the source files in the [source](source) folder.
-
-The bulk of the documentaion that makes up the GDS Way can be found in files located in the `source/standards` and `source/manuals` directories.
 
 ### Adding documentation
 
@@ -20,22 +12,14 @@ You can add a new file to the source folder (or an appropriate sub-folder) to cr
 
 It is probably easiest to copy an existing file and change the name if you are new to writing text in [markdown](https://www.markdownguide.org/).
 
-You then need to manually add your new page to one of the menu files in [source/partials/_nav...](source/partials/_nav...) for it to appear in one of the menus.
 
 ### Raising and merging PRs to this repo
 
-To submit changes to this repo, raise a PR in the usual way and these will be regularly reviewed by The GDS Way forum group that meets once a month.  Reviewing and merging PRs at any time is fine, the forum will also review merged PRs as part of its regular meeting.
+To submit changes to this repo, raise a PR in the usual way.
 
-Any open non-draft PRs that have been more than 1 month without further comments, suggestions or alterations will be merged by the forum group unless there is an explicit "DO NOT MERGE" somewhere in the title or description.
+### The GDS Way
 
-There is a GDS Slack channel `#gds-way` where these are discussed.
-
-### Making functional changes
-
-The GDS Way is built from the [Tech Docs Template](https://github.com/alphagov/tech-docs-template)
-repository. Any functional changes and bug fixes should be made to that project first, then follow the
-instructions [here](https://github.com/alphagov/tech-docs-template#updating-a-project-to-use-the-latest-template)
-to update the GDS Way.
+The Digital Handbook was built using the [gds-way](https://github.com/alphagov/gds-way) as a starting point.
 
 ## Running Locally
 
@@ -46,8 +30,14 @@ To preview or build the website, we need to use the terminal.
 You can use the Dockerfile provided:
 
 ```
-docker build . -t gds-way
-docker run --rm -p 4567:4567 -p 35729:35729 -v $(pwd):/usr/src/docs -it gds-way
+docker build . -t digital-handbook
+docker run --rm -p 4567:4567 -p 35729:35729 -v $(pwd):/usr/src/docs -it digital-handbook
+```
+
+Alternatively, you can simply run the startup.sh script, which automates the above steps:
+
+```
+./startup.sh
 ```
 
 Otherwise, the following steps will get Middleman running locally.
@@ -65,8 +55,8 @@ If you update it, please update the [Dockerfile](./Dockerfile).
 Clone the repository using:
 
 ```
-git clone https://github.com/alphagov/gds-way.git
-cd gds-way
+git clone https://github.com/cabinetoffice/digital-handbook
+cd digital-handbook
 ```
 
 #### Additional commands for Apple silicon
