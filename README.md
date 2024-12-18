@@ -15,7 +15,7 @@ It is probably easiest to copy an existing file and change the name if you are n
 
 ### Raising and merging PRs to this repo
 
-To submit changes to this repo, raise a PR in the usual way.
+To submit changes to this repo, raise a PR in the usual way detailing documentation changes in the description.
 
 ### The GDS Way
 
