@@ -4,11 +4,11 @@
 
 ### Making documentation changes
 
-To make changes edit the source files in the [source](source) folder.
+To make changes edit the source files in the [source/docs](source/docs) folder.
 
 ### Adding documentation
 
-You can add a new file to the source folder (or an appropriate sub-folder) to create a new page.
+You can add a new file to the source/docs folder (or an appropriate sub-folder) to create a new page.
 
 It is probably easiest to copy an existing file and change the name if you are new to writing text in [markdown](https://www.markdownguide.org/).
 
@@ -152,7 +152,7 @@ This script is automatically run as part of CI, but skipped on the main branch
 
 ## Deploy
 
-This repo is continuously deployed from the `main` branch by GitHub Actions, using the workflow defined in [`/.github/workflows/bundle_and_release.yml`](/.github/workflows/bundle_and_release.yml).
+This repo is continuously deployed from the `main` branch by GitHub Actions, using the workflow defined in [`/.github/workflows/deploy-to-pages.yaml`](/.github/workflows/deploy-to-pages.yaml).
 
 ## Licence
 
