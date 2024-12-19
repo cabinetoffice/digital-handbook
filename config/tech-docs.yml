@@ -1,6 +1,6 @@
 # Host to use for canonical URL generation (without trailing slash)
-host: https://cabinetoffice.github.io/Digital-Handbook
-service_link: /Digital-Handbook
+host: https://guidance.cabinetoffice.gov.uk/digital-handbook
+service_link: /digital-handbook
 
 # Header-related options
 show_govuk_logo: false
@@ -10,7 +10,7 @@ show_expiry: false
 
 # Links to show on right-hand-side of header
 header_links:
-  GitHub: https://github.com/cabinetoffice/CO-Digital-Handbook
+  GitHub: https://github.com/cabinetoffice/digital-handbook
 
 footer_links:
   Accessibility: /accessibility.html
@@ -29,12 +29,12 @@ max_toc_heading_level: 6
 prevent_indexing: false
 
 show_contribution_banner: true
-github_repo: cabinetoffice/CO-Digital-Handbook
+github_repo: cabinetoffice/digital-handbook
 github_branch: main
 
 # Ownership for page reviews
 default_owner_slack: '#cabinetofficedigital'
-owner_slack_workspace: Digital-Handbook
+owner_slack_workspace: digital-handbook
 
 # Are these still needed?
 redirects:
