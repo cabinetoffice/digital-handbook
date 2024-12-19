@@ -5,16 +5,18 @@ title:  Cabinet Office Digital Handbook
 
 <% content_for :sidebar do %>
 <ul>
-    <li><a href='#co-digital-handbook'> Cabinet Office Digital Handbook</a></li>
-    <li><a href="#principles">Principles</a><%= partial 'partials/nav-principles' %></li>
-    <li><a href="#policies-and-guidance">Policies and Guidance</a><%= partial 'partials/nav-guidance' %></li>
-    <li><a href="#blueprints-and-patterns">Blueprints and Patterns</a><%= partial 'partials/nav-blueprints' %></li>
+    <li><a href='#co-digital-handbook'>Cabinet Office Digital Handbook</a></li>
+    <li><a href='#principles'>Principles</a><%= partial 'partials/nav-principles' %></li>
+    <li><a href="#architecture">Architecture</a><%= partial 'partials/nav-architecture' %></li>
+    <li><a href="#governance">Governance</a><%= partial 'partials/nav-governance' %></li>
+    <li><a href="#standards">Standards</a><%= partial 'partials/nav-standards' %></li>
+    <li><a href="#policies-and-guidance">Policies and Guidance</a><%= partial 'partials/nav-policies-and-guidance' %></li>
 </ul>
 <% end %>
 
 <%= partial 'partials/site-banner' %>
 
-# <%= current_page.data.title %>
+<h1 id="co-digital-handbook"><%= current_page.data.title %></h1>
 
 Welcome to the CO Digital Handbook, your comprehensive guide to understanding and implementing digital the Cabinet Office way through out set of policies, standards, principles, strategies, guidance, and blueprints that we frequently use to ensure our technology is compliance to regulations, policies and follow the industrial and government best practice.
 
@@ -79,8 +81,6 @@ What specific bits of software (commercial or open source) do
 we use to help us do this thing?
 ```
 
-
-
 ## Principles
 
 Principles are fundamental truths or propositions serving as the foundation for a system.  They are used to shape the values and culture of an organisation and inform the development of policies and standards. Principles are advisory in nature.
@@ -90,16 +90,44 @@ List of principles the Cabinet Office developed and adopted:
 
 <%= partial 'partials/nav-principles' %>
 
+## Architecture
+
+The "Architecture" section of this Digital Handbook is designed to provide the guiding principles that underpin architecture, reference architecture and blueprints we use for architectural designs. 
+
+The technical blueprints provide an overview of the Cabinet Office technology landscape, providing a starting point for when we want to introduce new technology into the Cabinet Office. 
+
+The purpose of our reference architecture is to offer a consistent framework, detailed schematics and specifications that supports the development and deployment of digital solutions across the organisation. 
+
+By adhering to established architecture principles, we aim to encourage the reuse of proven solutions, foster the consolidation of resources, and enhance interoperability and scalability. 
+
+This approach not only streamlines processes and reduces redundancy but also ensures that our digital initiatives are aligned with our strategic goals and can adapt to evolving technological landscapes. 
+
+Through this guidance, we aspire to create a cohesive and resilient digital infrastructure that supports innovation and operational excellence.
+
+| Term                     | Description                                                                                                                                                                                                                          |
+|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Tech Blueprint (Enterprise Solution) | An enterprise-wide blueprint, presenting the centralized, approved technology and tools used in different domains. Most of these technologies have centralized contracts and a service support wrapper to ensure resilience. |
+| Reference Architecture   | A template solution for an architecture for a particular domain. It contains a common vocabulary and structure for implementations, helping streamline processes, improve interoperability, and ensure consistency across projects.      |
+| Design Patterns          | General, reusable solutions to common problems or challenges in software design. They provide a template for solving a problem in a specific context, promoting best practices and ensuring consistency in code. Examples: Integration pattern, Model-View-Controller (MVC). |
+
+List of architecture the Cabinet Office use for Digital:
+
+<%= partial 'partials/nav-architecture' %>
+
+## Governance
+
+List of governance CO Digital use:
+
+<%= partial 'partials/nav-governance' %>
+
+## Standards
+
+List of standards CO Digital abide by:
+
+<%= partial 'partials/nav-standards' %>
 
 ## Policies and Guidance
 Guidance are advice, recommendations, or best practices to aid implementation. They are to support the application of policies and standards, clarify expectations, and provide practical instructions. We should follow Policies and Guidance within the specified scope of digital.
 
 List of guidances the Cabinet Office use for Digital:
-<%= partial 'partials/nav-guidance' %>
-
-
-## Blueprints and Patterns
-Blueprints and Patterns are comprehensive documents or diagrams outlining the architecture of digital systems. They are to provide a clear and structured framework for building and managing digital systems, ensuring alignment with business objectives and technical requirements. Blueprints are patterns are recommended as a starting point for architectural design.
-
-List of Blueprints and patterns the Cabinet Office use for Digital:
-<%= partial 'partials/nav-blueprints' %>
+<%= partial 'partials/nav-policies-and-guidance' %>
