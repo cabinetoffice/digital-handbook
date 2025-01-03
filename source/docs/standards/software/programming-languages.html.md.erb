@@ -1,0 +1,92 @@
+---
+title: Programming Languages
+last_reviewed_on: 2025-01-03
+review_in: 12 months
+---
+
+# <%= current_page.data.title %>
+
+The Cabinet Office uses a standardised set of programming languages for
+core software development tasks to enable:
+
+- developers and engineers move between projects easily
+- develop shared components that can be reused by different projects
+- strength organisational capabilities
+- smooth transition between suppliers and in-house capabilities
+
+## References
+
+- [Service manual][manual_js]
+- [GDS Way][gds-way]
+- [Node.JS][nodejs]
+- [GOV.UK Prototype Kit][]
+- [GOV.UK Design Systems][]
+
+## Prototyping
+
+You should use [GOV.UK Prototype Kit][] and follow the guidance in [GOV.UK Design Systems][] to build the protoypes.
+
+## Frontend development
+### Client-side
+
+You should follow the Service Manual [Service manual][manual_js]'s guidance, and progressively build your site starting from HMTL, CSS or GOV.UK Frontend.
+
+Whilst you may use JavaScript to add interactive elements to your service, you should follow the advice in [service manual](https://www.gov.uk/service-manual/technology/using-progressive-enhancement) and consider the alternative options to JavaScript, and understand how to develop a robust frontend with JavaScript.
+
+### Server-side
+
+You should use [Node.js][nodejs] for Server side scripting.
+
+You should use Node.js to render a web interface for your service, for example,
+to created thin, client-facing applications that do not store
+data.
+
+You may also use [TypeScript][] to work with more complicated requirements, e.g. to working with a statically typed, compiled language,
+
+
+## Backend development
+
+You should use the core languages defined for backend development as follow:
+
+- [Java][]
+- [Python][]
+- [Ruby][]
+
+Your can also use Node.js in the backend for
+serverless systems.
+
+### Note on Python
+
+You should write new Python projects in Python 3.
+[Python 2 reached end of life in 2020][PEP373]. Python 3 is now well-supported
+by application frameworks and libraries, and is commonly used in
+production.
+
+
+
+
+
+## Using other languages
+
+There may be reasons to deviate from the standardised languages.
+For example:
+
+- extending an existing codebase or framework
+- scripting in a particular operating environment
+- experimenting during an alpha (with an expectation that it's replaced by something we have more confidence in for beta)
+- working in a very specific or unusual problem domain, like heavy use of WebSockets
+
+If you want to use a non-standard language, you should seek approval from the [Techical Design Authority](../../governance/technical-design-authority.html).
+
+[nodejs]: https://nodejs.org/
+[manual_js]: https://www.gov.uk/service-manual/technology/using-progressive-enhancement
+[GOV.UK Prototype Kit]: https://prototype-kit.service.gov.uk/docs/
+[di-ts]: https://github.com/search?l=TypeScript&q=user%3Aalphagov+topic%3Adigital-identity&type=Repositories
+[Java]: /manuals/programming-languages/java.html
+[Python]: /manuals/programming-languages/python/python.html
+[Ruby]: /manuals/programming-languages/ruby.html
+[PEP373]: https://www.python.org/dev/peps/pep-0373/
+[TypeScript]: https://www.typescriptlang.org/
+[gds-way]: https://gds-way.digital.cabinet-office.gov.uk/standards/programming-languages.html
+[GOV.UK Prototype Kit]: https://prototype-kit.service.gov.uk/docs/
+[GOV.UK Design Systems]: https://design-system.service.gov.uk/
