@@ -1,0 +1,218 @@
+---
+title: Software Development and Operation Policies
+last_reviewed_on: 2024-11-04
+review_in: 6 months
+---
+
+# <%= current_page.data.title %>
+
+# Introduction
+
+The Cabinet Office (CO) Development and Operations Strategy promotes development and operation best practice for digital services or platforms within the Cabinet Office.
+
+We cover the following elements in the development and operations chain:
+
+* **Coding**: code development and review, source code management tools, code merging.
+* **Building**: continuous integration tools, build status.
+* **Testing**: continuous testing tools that provide quick and timely feedback on business risks.
+* **Packaging**: artefact repository, application pre-deployment staging.
+* **Releasing**: change management, release approvals, release automation.
+* **Configuring**: infrastructure configuration and management, infrastructure as code tools.
+* **Monitoring**: applications performance monitoring, end-user experience.
+* **Security measures**: security measures and Tools incorporated in the Devops cycle
+
+You should use the CO Development and Operations Strategies if you intend to build and operate a digital service or platform, in-house or outsourced. Following the CO Development and Operations Strategies will help you introduce or update technology so that it:
+
+
+* aligns with CO technical strategies
+* is sustainable
+* is less dependent on single third-party suppliers
+* is resilient and scalable for future use
+
+## Reference Frameworks
+
+The CO Development and Operations Strategies is in alignment with these frameworks:
+
+
+* [Technology Code of Practice](https://www.gov.uk/government/publications/technology-code-of-practice/technology-code-of-practice)
+* [Government Design Principles](https://www.gov.uk/guidance/government-design-principles)
+* [GOV.UK Service Manual](https://www.gov.uk/service-manual/technology/deciding-how-to-host-your-service)
+* [Cloud First Policy](https://www.gov.uk/guidance/government-cloud-first-policy)
+* [Cabinet Office Cyber and Information Security Policies](https://intranet.cabinetoffice.gov.uk/it-data-and-security/cyber-and-information-security-services/cyber-security-policies/)
+* NCSC [Cloud Security Principle](https://www.ncsc.gov.uk/collection/cloud-security/implementing-the-cloud-security-principles)
+
+We also recommend the toolings in this Strategy, which are in alignment with the [toolings used in the CO](). This is to ensure a capability match when the services change ownership.
+
+## Contacts
+You should contact:
+
+* the Cabinet Office Cyber Security Team ([cyber.security@digital.cabinet-office.gov.uk](mailto:cyber.security@digital.cabinet-office.gov.uk)) regarding cyber security policies and internal services
+* the Architecture Team ([co-digital-architecture@digital.cabinet-office.gov.uk](mailto:co-eaa@cabinetoffice.gov.uk)) regarding central toolings available for security and operational monitoring, and the assurance services
+* the Technical Design Authority ([co-tda@cabinetoffice.gov.uk](mailto:co-tda@cabinetoffice.gov.uk)) to make sure your architecture designs are in compliance with the technical strategy, policies and assurance requirements.
+
+
+# Standards
+
+
+## 1. Incorporate security measures
+
+We should embrace secured by design policy. You should automate the process of security updates and alerts to the delivery of the security patches as appropriate. You should by default.
+
+You should have security measures and monitoring for the application and infrastructure, including,
+
+* use a [Web Application Firewall](./software/web-application-firewall.html)
+* Automate the monitoring of [third party software dependencies](./software/tracking-dependencies.html#how-to-manage-third-party-software-dependencies)
+* use vulnerability scanning
+* Automate [access control tracking](./software/secrets-acl.html#content) and corresponding alerting
+* set up access and security related configuration change monitoring when appropriate
+* apply [principle of least privilege](./software/principle-least-access.html)
+* perform [threat modelling to anticipate security issues](./software/threat-modelling.html)
+* take extra precautions in [storing credentials](./software/storing-credentials.html)
+* [manage third party software dependencies](./software/tracking-dependencies.html)
+
+The security design and monitoring should be included in your architecture design, to be approved by the Technical Design Authority.
+
+Please contact CO Cyber Security [cyber.security@digital.cabinet-office.gov.uk](mailto:cyber.security@digital.cabinet-office.gov.uk) regarding the central toolings, Cabinet Office policy and provision of security services.
+
+
+## 2. Use test-driven development and automate tests
+
+You should use test-driven development for all application and infrastructure code. You should write the corresponding test scripts when a new feature is introduced.
+
+You should use automated tests to compare the actual outcomes with the predicted outcomes of your service. You should include
+
+
+* unit tests to test individual functionality. You should ensure there is enough test coverage throughout the codebase using a code coverage tool.
+* integration tests to test the integration between microservices, and between your codes and external components
+* functional tests to test a particular function of your service end-to-end
+* performance and stress tests to test the limit and behaviour of your service under normal and stressed conditions
+* [Smoke tests](https://www.gov.uk/service-manual/technology/deploying-software-regularly#using-smoke-tests-after-you-deploy)
+
+You should integrate the tests in your integration and deployment pipelines, and use appropriate environments to run the tests.
+
+You can also consider other specialised test tools and concepts, including linting, [front end performance](./software/optimise-frontend-perf.html#automate-testing), vulnerability scanning and model based testing to further assure the quality of your software.
+
+The test strategy shall be included in your architecture design, to be approved by the Technical Design Authority.
+
+
+## 3. Use Cabinet Office Github for repository management
+
+You should ask for a Cabinet Office managed Github repository as your code repository ([github-requests@cabinetoffice.gov.uk](mailto:github-requests@cabinetoffice.gov.uk)). This is to ensure visibility, searchability and reusability of your code.
+
+You should consider [making your code open from the start](https://www.gov.uk/service-manual/technology/making-source-code-open-and-reusable) as recommended in the [service manual](https://www.gov.uk/service-manual).
+
+You can reference the guidelines on [how to store source code](./source-code/).
+
+Deviation from the use of [CO Github](https://github.com/cabinetoffice) and open source strategy needs to be approved by the Technical Design Authority
+
+
+## 4. Use continuous code integration, and continuous deployment when appropriate
+
+We should use continuous integration to support the testing and deployment of software development.
+
+This minimises manual error and oversight, improves code quality, productivity and enhances security and assurance in software development.
+
+You should introduce [code-review](https://github.com/features/code-review/) in your integration process and mandate that at least one approved review is required to merge a pull request. We recommend that a technical leader or architect is included in the review and approved process.
+
+If appropriate, you can consider using continuous deployment to push codes from merging to production once you are confident that your deployment pipeline and tests are robust.
+
+Architect your deployment pipeline, codes and infrastructure to allow for fixing forward when we need to reverse the change of a deployment.
+
+The code review, integration and deployment strategy shall be included in your architecture design, to be approved by the Technical Design Authority.
+
+
+## 5. Use test environments
+
+We should create separate non-production cloud environments to meet the different testing needs of the service/ platform. A set of tests are usually run in each of these environments to ensure the codes work as expected before going to live. You should include:
+
+
+
+* development environment: unit, lint, integration and functional tests are usually run to ensure the new code works as expected and can be integrated into the pre-existing code and software. Other tests such as security checks and database migration may also be run.
+* staging environment: This environment is usually created to mirror the production environment to check the reliability of the application in a production-like environment. It should not have production data and differences in scale and traffic patterns should be noted.
+* production environment: once the application has passed all the required tests, it is promoted to be live.
+
+Other (ephemeral) environments may be created and used for isolated feature development, running security penetration, load/stress tests, etc.
+
+The separation of environments should be included in your architecture design, to be approved by the Technical Design Authority.
+
+
+## 6. Use infrastructure as code
+
+You should use infrastructure as code (IaC) language to create all the infrastructure in your development, staging and production environments. Our strategic IaC framework is Terraform and CloudFormation for AWS infrastructure.  This includes hosting resources, networking, security boundaries, identity and access control, storage, container and machine configuration and integration.
+
+Infrastructure as code can help ensure the repeatability, auditability, visibility, portability and security of the created infrastructure.
+
+You should use available tools and libraries to abstract the infrastructure, building artefacts and machine [configurations in code](./software/configuration-management.html#content).
+
+Deviation from the IaC approach and strategic framework, needs to be approved by the Technical Design Authority.
+
+
+## 7. Conduct at least annual IT Health Check
+
+An IT Health Check (ITHC) should be conducted at least annually, and appropriately scoped with an Information Assurance (IA) officer. Some high risk services may require more frequent test schedules with a smaller scope than the mandated annual one. Penetration tests (pentests)  should form a part of the ITHC.
+
+The ITHC should be done by a CREST and/or the [National Cyber Security Centre (NCSC) CHECK ](https://www.ncsc.gov.uk/information/using-check-provider) accredited party which can be external or internal. You should follow the [guidance](./software/how-to-do-penetration-tests.html#how-to-do-penetration-tests) on penetration tests.
+
+
+## 8. Adopt CO vulnerabilities corrective action targets
+
+You should integrate vulnerability and security patching into your delivery process, and categorise the severity of vulnerabilities for COTS Software, with reference to the [National Vulnerability Database](https://nvd.nist.gov/) [severity ratings](https://nvd.nist.gov/vuln-metrics/cvss) and relevance to your codes.  You should subscribe to the relevant [NVD data feeds](https://nvd.nist.gov/vuln/data-feeds), and use [NCSC web check](https://www.ncsc.gov.uk/information/web-check) to identify and fix common security issues for citizen-facing websites.
+
+You should aim to do security patches:
+
+
+
+* 7 days after the public release of patches for those vulnerabilities categorised as “Critical”;
+* 30 days after the public release of patches for those vulnerabilities categorised as “High”;
+* 60 days after the public release of patches for those vulnerabilities categorised as “Medium”.
+
+The vulnerability tracking and patching strategy should be included in the architectural design, to be approved by the Technical Design Authority.
+
+
+## 9. Develop an incident management process
+
+You should design an incident management process to handle communications and resolving incidents.
+
+Please refer to “[How to manage technical incidents](./software/incident-management.html#how-to-manage-technical-incidents)” to set up your incident management process. You should use a tool such as [Statuspage](https://status.io/) to communicate the status of your service and incident with your users.
+
+
+## 10. Plan for disaster
+
+You should develop high availability architecture taking advantage of multiple availability zones in the public cloud.  However, you should still plan for rare incidents or disasters, and develop a set of scenarios, policies, tools and procedures to handle the situations.  This can either be communications, or recovering the data and a subset of services to a recovery site depending on the business needs.
+
+You should develop a disaster handling plan, and document and exercise them once a year as “game days”.
+
+Some examples of disaster scenarios:-
+
+
+
+* A complete regional unavailability of a cloud provider
+* A serious data security breach that means shutting down your systems to fix the problem.
+* A ransomware attack that has made your data unavailable
+
+Please refer to the “[Disaster Recovery](./software/disaster-recovery.html)” section on how to plan for disaster recovery for your service and platform.
+
+
+## 11. Document architectural decisions and technical debts
+
+You should document [architecture record decisions](./software/architecture-decisions.html#documenting-architecture-decisions) that affect the architecture of your service in a decision log, in order to preserve the context and analysis of your decisions.
+
+Architectural decision records (ADRs) should be documented as a part of the decision records of the service. An [ADR template](https://docs.google.com/document/d/1v0MeR0sNjf-ySkaUvBepoIysMI0B-aYjb-OH2rp98bY/edit?usp=sharing) can be downloaded.
+
+You should [track your technical debt](./software/technical-debt.html) throughout the software development lifecycle.
+
+
+## 12. Monitor your service
+
+You should [monitor your service](./software/monitoring.html) to understand the capability and performance of your service. This will also help you diagnose your service in the event of incidents. This includes:
+
+
+* logs - applications error and infrastructure messages
+* performance metrics
+* service availability (use Cabinet Office [Pingdom](https://my.pingdom.com/))
+
+You should [set up automated alerts](./software/alerting.html#how-to-manage-alerts) on important issues.
+
+You can use [Service Level Indicator](./software/slis.html) (SLI) and [Service Level Objectives](./software/slo.html) (SLO) to monitor the important journeys of your service, and to obtain data for prioritisation of maintenance tasks and issues.
+
+Your should include the monitoring strategy in the architecture, to be approved by the Technical Design Authority
