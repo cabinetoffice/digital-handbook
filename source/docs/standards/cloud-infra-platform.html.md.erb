@@ -1,0 +1,174 @@
+---
+title: All Technology and Digital
+last_reviewed_on: 2024-11-04
+review_in: 6 months
+---
+
+# <%= current_page.data.title %>
+
+# Cloud Infrastructure and Platform Strategy
+
+The Cabinet Office Cloud Infrastructure and Platform Strategy defines the Cabinet Office strategy and reasons for choosing hosting providers for digital services and platforms.
+
+You can use Cloud Infrastructure and Platform Strategy to choose a hosting platform if you intend to build or renew a digital service or platform, either in-house or outsourced. For existing services, there are some guidelines at 4.3 if you are considering a cloud migration. However, details of cloud migration are not in scope for this document.
+
+The Cabinet Office uses multiple clouds vendors. The decision to adopt a particular cloud for the use case depends on the type of workloads, costs, commercial agreement, sustainability and departmental capabilities.
+
+
+# 1. Amazon Web Service (AWS)
+
+Amazon Web Service (AWS) is the Cabinet Office strategic hosting platform. You must consider using AWS first to host your digital services and platforms at the OFFICIAL classification (including the SENSITIVE handling caveat, marked OFFICIAL-SENSITIVE).
+
+
+## Why
+
+Cabinet Office (CO) Digital has invested significant effort in optimising and assuring the AWS infrastructure. This includes:
+
+
+
+* Consolidating many AWS contracts into one Enterprise contract across the Cabinet Office. Collectively we get the benefits of economy of scale, discounted rate and enterprise support with AWS.  We help the Cabinet Office to cut costs by managing the contract and assuring the suppliers once only.
+* Engineering resource to provision and maintain AWS users and accounts with infrastructure-as-code.
+* Building in organisational-wide security policies, including access and protective monitoring and enterprise-level security configurations to give a baseline protection for our AWS accounts.  Account access logs are by default sent to the Security Operations Centre operated by CDIO to monitor irregular behaviours such as IAM / S3 policy changes out-of-hours, and undesirable configurations such as SSH/RDP ports open to the internet. Related alerts are automatically generated and sent to the account managers.
+* Tools to manage the financial and billing across the Cabinet Office better as we have enterprise-level billing visibility across all the accounts.
+* Focusing our in-house capabilities into a few things, AWS is one of them.
+* We can closely monitor AWS in terms of achieving Government objectives, including [sustainability](https://www.gov.uk/guidance/make-your-technology-sustainable).
+
+The AWS Enterprise contract with [AWS includes](https://assets.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-13/documents/93253/232745631759684-service-definition-document-2022-05-10-1139.pdf):
+
+
+
+* SLA on incident response less than 15 minutes
+* infrastructure event management
+* a designated technical account manager
+* AWS Shield advanced
+* [AWS Enterprise Support](https://www.applytosupply.digitalmarketplace.service.gov.uk/g-cloud/services/232745631759684)
+* AWS training
+* Professional services
+
+AWS is considered the market leader for[ cloud infrastructure and platform services in the Gartner 2023 magic quadrant](https://aws.amazon.com/blogs/aws/read-the-2023-gartner-magic-quadrant-for-strategic-cloud-platform-services/) in terms of ability to execute and completeness of vision (see Appendix). This is important as the Cabinet Office’s invested strategic platform and supplier needs to be stable, scalable and future-proofed for the foreseeable future.
+
+
+## How
+
+
+
+* You must ONLY use the AWS accounts provisioned by CO Digital by using the [Request an AWS Account Tool](https://request-an-aws-account.gds-reliability.engineering/). Contact [platform engineering team](mailto:co-platform-engineering@cabinetoffice.gov.uk) if you require any support or guidance with your AWS account. Your usage is rechargeable to your business unit.
+* You must follow the [Architecture Principles](?tab=t.i94zzlkrq3rz) and [Software Development](rrfthtpk2) and [Technical Operation](?tab=t.nhvg71qj736) Guidance to develop in AWS.
+* You must use AWS accounts to separate your production and non-production environments, as well as different services and access control. This is to avoid the engineering needs to create security boundaries; and to make it easier to attribute the costs to the right services and functions.
+* You must host your new service in AWS London (eu-west-2), or AWS Ireland (eu-west-1) as an alternative.  This rule does not apply to global services such as Cloudfront.
+
+You must consider the reuse of Government and CO Digital common platforms and components rather than building your own whenever appropriate; and incorporate them into your end-to-end architecture. This includes, GOV.UK Notify, GOV.UK Pay, COLA ([Cabinet Office Login App](https://docs.google.com/document/d/1CZlQfy9zQO9AFlTQXJ82Z6gXjA2jMzLshaCw_EGaOuA/edit?usp=sharing)).
+
+
+## Cloud Computing and Architectural Design
+
+You may use any AWS services to design your architecture according to your service’s needs. You should consider the use of AWS compute resources, and consider them regarding their technical suitability, ease of maintenance and cost effectiveness:-
+
+
+
+1. Serverless (Lambda)
+2. Container service (ECS, Fargate over EC2)
+3. Virtual machines (EC2)
+4. Elastic beanstalk
+
+You should design your architecture with AWS managed services (Cloudfront, SQS, S3, Redshift, RDS, etc.) whenever possible and appropriate.
+
+The architecture should be easily scalable; hence, we recommend using serverless (Lambda and Fargate) and autoscaling features whenever appropriate.
+
+You should:
+
+
+
+* have technical and security assurance on your architectural design
+* optimise your design with resilience, scalability, security and cost reduction in mind
+* Forecast your costs and continuously revise your architecture to optimise your spend on infrastructure. For example, turn off development environments out of hours; use reserved instances.
+* use the AWS Well-Architected Framework, GuardDuty and audit manager to manage and provide further assurance to your design and operation.
+* Adhere to the [cloud cost optimisation standards](https://docs.google.com/presentation/u/0/d/1NHc0TKpXAg-46TW4pHLYhlojCFE9lRkLi5-7qMvZYpU/edit)
+
+
+# 2. Azure
+
+Azure can be considered a good solution for some use cases for services at the OFFICIAL classification (including the SENSITIVE handling caveat, marked OFFICIAL-SENSITIVE), for example, developing a service to automate in Microsoft/ Azure ecosystems, when Active Directory or Sharepoint are part of the architectural design.
+
+You should always consider using AWS first to see if it meets your needs to help the Cabinet Office to achieve enterprise-level objectives. However, you can consider Azure:
+
+* if you are developing a system around the Microsoft ecosystem
+* If you would like to introduce resilience and disaster recovery with an additional cloud provider
+* for cross-government collaborative projects, where the other department is using Azure
+* if you have an existing system that is already on Azure (See Section 6 on guideline for migration)
+
+
+## Why
+
+We would like to introduce a second strategic public cloud provider to reduce the Cabinet Office reliance on a single vendor. Moreover, CO Digital acknowledges the need to use Azure for automation around the Microsoft ecosystem.
+
+
+## How
+
+If you would like to use Azure to build a new service, you should contact [CO Enterprise Architecture](https://groups.google.com/a/cabinetoffice.gov.uk/g/co-eaa) for inquiry.  The TDA will evaluate your use case and approve or disapprove the use.
+
+
+# 3. Other platforms and considerations
+
+
+## 3.1 Google Cloud (GCP)
+
+You should <span style="text-decoration:underline;">NOT</span> build a digital service in GCP.  However, the use GCP is permitted ONLY under these conditions:
+
+
+
+* for data science that requires some of the advanced GCP tools, including ML/AI and Big query.
+* building Single Sign On integration
+* for building resilience and disaster recovery
+* stress testing your main service/ platform
+* with approval of the the Cabinet Office Technical Design Authority
+
+
+## 3.2 Salesforce
+
+Salesforce should <span style="text-decoration:underline;">NOT</span> be used as a platform for hosting a high-code digital service, unless you have approval from the Cabinet Office Technical Design Authority.
+
+Salesforce should be used as a customer relation management (CRM) and a case management system (CMS). Should a user facing frontend interface be required, a bespoke solution built on GOV.UK Design System hosted on the above strategic platforms should be considered first, unless you have approval from the Cabinet Office Technical Design Authority.
+
+The only exception for using the Salesforce hosting platform is if a simple, static content-page is required as the front page of the Salesforce CRM, where user interaction is minimal; or a simple form to collect information that will be fed into Salesforce.
+
+This is because:
+
+
+
+* the frontend developed in Salesforce Experience does not meet the required standard set in the Public Sector Bodies Accessibility Regulations. However, you can use the Salesforce APEX codes with the GOV.UK Design Systems to meet accessibility requirements
+* Salesforce development language, APEX (Java-like), is vendor-specific, and is not a common capability across the Cabinet Office
+* difficult to apply automated load tests and pentests on services running on the platform
+* Salesforce licensing model is not a good fit for citizen-facing applications
+
+
+## 3.3 Infrastructure migration
+
+We understand that there are some existing services that are hosted on-prem, in virtual or private clouds that do not currently align with the Cabinet Office strategic platforms.
+
+While there is an architectural incentive to modernise and update the technology, which usually means lower operational costs, better security, future proofing for further development and improvement;  cloud migration should be considered and planned with care, and per use case. You should consider a cloud migration if any of the following are true:
+
+
+
+* Your service is considered a [legacy IT system](https://www.gov.uk/government/publications/guidance-on-the-legacy-it-risk-assessment-framework/guidance-on-the-legacy-it-risk-assessment-framework).
+* You have a service running on-prem, virtual or private cloud infrastructure
+* You have a significant number of virtual machines in these facilities (>20), and hence migration is likely to bring cost benefits to the service.
+* You are at a point when you would like to refresh the whole technology, and would like to incorporate user-centric design and development
+
+You may be able to gain some quick benefits by migrating part of the infrastructure. For example, by using managed SaaS services instead of self-host services such as Postgres database and Tableau server.
+
+We will need investment for cloud migration; a business and impact analysis should be performed to understand the options, costs, benefits, impact and plan of migration and dual running, and return on investment. The residual risks of not migrating the service, and a plan to revisit the decision in a later day should also be considered.
+
+Please contact our [legacy IT team](https://groups.google.com/a/digital.cabinet-office.gov.uk/g/co-legacy-it) to arrange an assessment and co-develop a mitigation plan.
+
+
+## 3.4 Secret and top secret classifications
+
+For services that are above OFFICIAL-SENSITIVE protective marking, a tailored infrastructure and platform solution will be required and are beyond the scope of this strategy.
+
+
+## 3.5 Heroku and Netlify
+
+You may prototype in the Heroku and Netlify platforms, especially in the Alpha stage of a development.
+
+However, in most cases, you shall not use Heroku or Netlify to hold any production data without the approval from the Technical Design Authority and the platform is information assured against the use case.
