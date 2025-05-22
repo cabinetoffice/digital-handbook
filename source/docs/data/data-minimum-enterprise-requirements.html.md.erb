@@ -1,0 +1,917 @@
+---
+title: The Cabinet Office Data Strategy
+last_reviewed_on: 2025-05-21
+review_in: 6 months
+---
+
+# <%= current_page.data.title %>
+
+The Cabinet Office Data Strategy (Version 1.0) was issued by CO CDO in July 2023 and has received endorsement for wider internal circulation and feedback from CO People and Operations Committee (POpsCo) and Executive Committee (ExCom). 
+
+The Data Strategy applies to the Cabinet Office in its entirety, encompassing all corporate functions, Business Units and Arms Length bodies that make up the organisation. 
+
+Phase 1 of The Strategy Delivery Roadmap sets up the Data Infrastructure Workstream of which one of the Key Activities is the production of Minimum Enterprise Requirements for Data;
+
+*“The Data Infrastructure workstream focuses on baselining and preparatory activities to define our approach to improving coherence across our technical Data estate. These  activities will also act as a central resource, including across technical, product, security and commercial professions, and inform strategic investment priorities for Data in subsequent roadmap delivery phases.  Key activities include:* 
+
+*\- Baselining the Cabinet Office Data landscape, producing a conceptual, entity-level model that provides clarity on source systems, data flows, data dependencies and data holdings.*
+
+*\- Developing an Enterprise Data Platform Roadmap, to guide incremental investments towards the development of multi-user and multi-purpose strategic data platform.*  
+
+*\- Production of Enterprise Data Rules, in the form of ‘**Minimum Enterprise Requirements**’ **(MERs)**, that all services and systems must adhere to, to drive coherence in our investments and ensure technical alignment to deliver the target state outcomes within this strategy. The MERs will be assured through the technical design authority (TDA), and in some cases will be applied to third party commercial agreements “*
+\[[The Cabinet Office Data Strategy v1.0](https://intranet.cabinetoffice.gov.uk/the-cabinet-office-data-strategy/)\]
+
+
+
+## MERs Formulation
+
+Enterprise Requirements are requirements that exist beyond the boundary of a project or program. They are Minimum when satisfying them is not discretionary. Typically, requirements deriving from a security policy, regulatory demands or strict business  constraints are good candidates for MERs.
+
+In this document, The Minimum Enterprise Requirements for Data are listed under the following headings representing each of the 10 data related outcomes being targeted by the CO Data Strategy;
+
+ Our data is:
+
+  * Findable  
+  * Accessible  
+  * Interoperable  
+  * Reusable  
+  * Compliant  
+  * Governed  
+  * Trustworthy  
+  * Ethical  
+  * Proportionate  
+  * Secure
+
+Each of these outcomes is clearly defined in the [Strategy](https://intranet.cabinetoffice.gov.uk/the-cabinet-office-data-strategy/)
+
+MERs are designed to be:
+
+* Traceable (to a strategy, standard or directive)   
+* Unambiguous   
+* Singular   
+* Implementable  
+* Verifiable. 
+
+## Audience
+
+Primary audience for MERs are architects/delivery leads that will be bringing solution designs for approval at CO TDA.
+
+## Evaluation and Approval 
+
+Approval of service/solution designs will be measured against these requirements as part of the TDA approval process.   
+
+Deviations from any of these requirements need to be explained and approved by the relevant authorities. 
+
+Each MER is given a MoSCoW prioritisation depending on the level of maturity of the organisation (see [MERs Scorecard](#heading=h.mtvit9w1silb)).    
+
+Designs that satisfy most requirements will score higher than those that only satisfy some, hence, have a greater likelihood of gaining approval from TDA. Minimum threshold for approval will be reviewed regularly by the TDA in line with the Data Maturity Assessment. This will be maintained in the [TDA Terms of Reference](https://guidance.cabinetoffice.gov.uk/digital-handbook/docs/governance/technical-design-authority)
+
+
+
+## Scope of Service/System
+
+These requirements are mandatory for services/systems with security classification of ‘Official’. For ‘Secret’ and ‘Top Secret’, services will be required to align with mandated requirements at the appropriate tier or security classification.  
+
+## Scope of Data
+
+“Data” here refers primarily to “[Essential Shared Data Assets (ESDA)](https://www.gov.uk/government/publications/essential-shared-data-assets-and-data-ownership-in-government)” and CO data, i.e. data that is critical or essential for CO or cross government services that need data for; 
+
+* public service delivery  
+* legislative, legal or contractual requirements  
+* defence, national security and resilience  
+* policy development and evaluation  
+* official statistics  
+* Cabinet Office operations (finance, staffing, etc) 
+
+
+
+<p></p>
+
+# Minimum Enterprise Requirements (MERs) for Data
+
+## Findable
+
+Our Data assets are known, and are discoverable and identifiable across the organisation.   
+Data is catalogued at an enterprise level, with standardised metadata viewable to all Cabinet Office users (unless handling or regulatory arrangements prevent otherwise). 
+
+**MER 1.1.1** Confirm that all Essential Shared Data Assets (ESDA) and CO data that will be consumed or produced by your service/system will be catalogued at an enterprise level with standardised metadata viewable to all Cabinet Office users (unless handling or regulatory arrangements prevent otherwise).
+
+**MER 1.1.2** Informatica Cloud Data Catalogue (ICDC) has been adopted for use by CO and all associated BUs and ALBs as the enterprise data catalogue (EDC). Confirm engagement with the CO [Data Management Team](https://intranet.cabinetoffice.gov.uk/data-and-information-management/data-strategy/) to ensure provisions have been made to get all in-scope data added to the catalogue. 
+
+**MER 1.1.3** The project should provision adequate [training](https://sites.google.com/cabinetoffice.gov.uk/data-catalogue-training/home) in the data cataloguing tool of choice for Data Owners and Data Stewards. The project has a clear and documented approach to keeping metadata published in this way updated \- either automatically, or, if manually, to an agreed schedule.
+
+**MER 1.2** Use the Data Catalogue Vocabulary ([DCAT](https://www.gov.uk/government/publications/recommended-open-standards-for-government/using-metadata-to-describe-data-assets-in-a-data-catalogue)) \- Version 3 as realised by the [UK Cross-Government](https://co-cddo.github.io/ukgov-metadata-exchange-model/) [Metadata Exchange Model](https://co-cddo.github.io/ukgov-metadata-exchange-model/) (DCAT-UK AP) to describe [datasets](https://co-cddo.github.io/ukgov-metadata-exchange-model/Dataset/) and [data services](https://co-cddo.github.io/ukgov-metadata-exchange-model/DataService/) in a catalogue using compatible model and vocabulary. 
+
+Vocabularies should be centrally managed by the [Data Management Team](https://intranet.cabinetoffice.gov.uk/data-management-hub-refresh/)
+
+Metadata will be held to represent: 
+
+* unique [identifier](https://co-cddo.github.io/ukgov-metadata-exchange-model/identifier/)  
+* [publisher](https://co-cddo.github.io/ukgov-metadata-exchange-model/publisher/)  
+* organisation [creating](https://co-cddo.github.io/ukgov-metadata-exchange-model/creator/) the data  
+* data owner or data steward [contact](https://co-cddo.github.io/ukgov-metadata-exchange-model/contactPoint/) details  
+* original source system (as a [relatedResource](https://co-cddo.github.io/ukgov-metadata-exchange-model/relatedResource/))  
+* immediate source system (as a [relatedResource](https://co-cddo.github.io/ukgov-metadata-exchange-model/relatedResource/))  
+* storage locations (including backups and operational replicas) \- represented in DCAT as a [distribution](https://co-cddo.github.io/ukgov-metadata-exchange-model/Distribution/) and linked using [relatedResource](https://co-cddo.github.io/ukgov-metadata-exchange-model/relatedResource/) property  
+* date and time [created](https://co-cddo.github.io/ukgov-metadata-exchange-model/created/)   
+* date and time [modified](https://co-cddo.github.io/ukgov-metadata-exchange-model/modified/)  
+* date and time published (DCAT [issued](https://co-cddo.github.io/ukgov-metadata-exchange-model/issued/) property)  
+* [update frequency](https://co-cddo.github.io/ukgov-metadata-exchange-model/updateFrequency/) of published data  
+* resource [title](http://title)  
+* resource [description](https://co-cddo.github.io/ukgov-metadata-exchange-model/description/)  
+* associated [keywords](https://co-cddo.github.io/ukgov-metadata-exchange-model/keyword/)  
+* CO access classification (public, available to the cabinet office, restricted access) \- mapped to the DCAT [access rights](https://co-cddo.github.io/ukgov-metadata-exchange-model/accessRights/) property  
+* government [security classification](https://www.gov.uk/government/publications/government-security-classifications/government-security-classifications-policy-html#definitions-for-official-secret-and-top-secret) (i.e. official, secret, top secret) with reference to handling instructions \- mapped in DCAT using [relatedResource](https://co-cddo.github.io/ukgov-metadata-exchange-model/relatedResource/) property   
+* quality assessment (i.e. unvalidated, validated, trusted) \- mapped to the DCAT [keyword](https://co-cddo.github.io/ukgov-metadata-exchange-model/keyword/) property  
+* machine generated data flag \- mapped to the DCAT [keyword](https://co-cddo.github.io/ukgov-metadata-exchange-model/keyword/) property   
+* retention schedule \- mapped in DCAT using [relatedResource](https://co-cddo.github.io/ukgov-metadata-exchange-model/relatedResource/) property  
+* personal data flag to indicate the presence of sensitive or personal information within the catalogued data \- mapped to the DCAT [keyword](https://co-cddo.github.io/ukgov-metadata-exchange-model/keyword/) property  
+* Data Protection Impact Assessment (DPIA) \- mapped in DCAT using [relatedResource](https://co-cddo.github.io/ukgov-metadata-exchange-model/relatedResource/) property  
+* purpose of collection \- mapped to DCAT [theme](https://co-cddo.github.io/ukgov-metadata-exchange-model/theme/) property   
+* data [licensing](https://co-cddo.github.io/ukgov-metadata-exchange-model/licence/) / sharing agreements   
+* related data sets (mapped in DCAT using [relatedResource](https://co-cddo.github.io/ukgov-metadata-exchange-model/relatedResource/) property)  
+* [version](https://co-cddo.github.io/ukgov-metadata-exchange-model/version/)  
+* [type](https://co-cddo.github.io/ukgov-metadata-exchange-model/type/)
+
+**MER 1.3** All critical data objects are identifiable by a golden record \- i.e. authoritative sources. Confirm you have engaged with CO [Data Architects](https://peoplefinder.cabinetoffice.gov.uk/teams/data-architecture) to ensure all key data items will be mapped to golden records in the CO Enterprise Data Model in the [Ardoq](https://cabinetoffice.ardoq.com/) Enterprise Architecture tool showing; 
+
+* how key data items map to systems and organisational units    
+* relationships and cardinality between key data items (e.g. ‘position’ has 0 or 1 ‘employee’, a ‘port’ has 0 to many ‘boat movements’)  
+* systems that master the key data item (e.g. SOP is the authoritative source for Civil Servant Employees)
+
+## Accessible
+
+Data is available and accessible to both humans and machines. This involves ensuring that Data is stored in a secure and reliable repository or data infrastructure.  
+   
+Access procedures and protocols should be well-defined, with authentication and authorisation mechanisms in place. 
+
+Where appropriate, Datasets are made readily available at a content level via an Enterprise level Data Marketplace.
+
+**MER 2.1** Where appropriate, data is ‘ready to share’ across government \- The system will provide the capability to share any essential data set across user groups and individuals across government (subject to appropriate authentication and authorisation). You should demonstrate that systems have been designed to facilitate future access requirements from CO Corporate Functions, BU’s, ALB’s and other government departments. Using this approach will reduce the barriers to use and challenge siloes.
+
+**MER 2.2** Interfaces for humans and machines *\-* Data will be accessible via APIs for humans and machines, including where appropriate;
+
+* Request-response REST API for data sets  
+* Subscription to events, such as [Outbox Pattern](https://microservices.io/patterns/data/transactional-outbox.html)  
+* Human readable formats (e.g. reports and dashboards)  
+* Human queryable API, such as an SQL interfaces  
+* Large data set request-response, such as Pagination or [Asynchronous Callback](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html#:~:text=Asynchronous%20Callback) Pattern
+
+**MER 2.3** All access to sensitive data will require authentication and authorisation (see CO guidance on [Using authenticators to protect an online service](https://www.gov.uk/government/publications/authentication-credentials-for-online-government-services/giving-users-access-to-online-services)).
+
+**MER 2.5** [Open data](#bookmark=id.wrx92d1r7kk8) produced by your system/service is accessible to the public in a standard [open data format](https://www.gov.uk/government/collections/open-standards-for-government-data-and-technology), free of errors and appropriate for public consumption/use.
+
+**MER 2.5** Data has a clear and accessible data usage licence or [Memorandum of Understanding (MOU)](https://intranet.cabinetoffice.gov.uk/task/data-protection-tool-and-templates/#:~:text=Link-,Data%20Sharing%20MoUs,-Controller%20to%20Controller); Ensure that data usage within CO complies with the appropriate cross Department MOU for; 
+
+* Publishing data with a licence/MOU  
+* Consuming data with a licence/MOU that is appropriate to your usage
+
+**MER 2.6** Content level search capability \- data being produced by your service/system should be indexed in a searchable resource (i.e. internal search engine / Data Marketplace) that would make it available to the widest possible audience (with appropriate access controls). Informatica Data Marketplace has been procured as an Enterprise Data Marketplace solution across CO, BU’s and ALB’s. Provision should be made for categorisation of data items to enable filtering of search results.
+
+## Interoperable
+
+Datasets are structured and formatted in a way that allows for seamless integration and interoperability with other datasets and systems. This includes adopting standardised data formats, models and ontologies for consistent data representation and exchange, with clear, documented and unambiguous data semantics.  
+
+**MER 3.1** Adopt CDDO [Open Standards for Government Data](https://www.gov.uk/government/collections/open-standards-for-government-data-and-technology) for storing and standardising your data. The Government [Data Standards Authority](https://www.gov.uk/government/groups/data-standards-authority) and the [Open Standards Board](https://www.gov.uk/government/groups/open-standards-board) have approved the following standards:
+
+Exchanging information (mandated):
+
+* [Exchange of calendar events](https://www.gov.uk/government/publications/open-standards-for-government/exchange-of-calendar-events)  
+* [Exchange of contact information](https://www.gov.uk/government/publications/open-standards-for-government/exchange-of-contact-information)  
+* [Exchange of location point](https://www.gov.uk/government/publications/open-standards-for-government/exchange-of-location-point)  
+* [Exchanging Cyber Threat intelligence](https://www.gov.uk/government/publications/open-standards-for-government/exchanging-cyber-threat-intelligence)  
+* [Share information between emergency services with Multi Agency Incident Transfer (MAIT)](https://www.gov.uk/government/publications/open-standards-for-government/multi-agency-incident-transfer)  
+* [Sharing or collaborating with government documents](https://www.gov.uk/government/publications/open-standards-for-government/sharing-or-collaborating-with-government-documents)  
+* [Collect, use and exchange beneficial ownership information](https://www.gov.uk/government/publications/open-standards-for-government/collect-use-and-exchange-beneficial-ownership-information)  
+* [Record and share information about public services in local authorities](https://www.gov.uk/government/publications/open-standards-for-government/record-and-share-information-about-public-services-in-local-authorities) 
+
+Formatting and describing information (mandated):  
+
+* [Encoding characters](https://www.gov.uk/government/publications/open-standards-for-government/cross-platform-character-encoding-profile)  
+* [Formatting dates and times in data](https://www.gov.uk/government/publications/open-standards-for-government/date-times-and-time-stamps-standard)  
+* [Persistent resolvable identifiers](https://www.gov.uk/government/publications/open-standards-for-government/persistent-resolvable-identifiers)  
+* [Tag content with international language codes](https://www.gov.uk/government/publications/open-standards-for-government/language-tags)  
+* [Use consistent country codes](https://www.gov.uk/government/publications/open-standards-for-government/country-codes)  
+
+Publishing information (mandated):  
+
+* [Identifying property and street information](https://www.gov.uk/government/publications/open-standards-for-government/identifying-property-and-street-information)  
+* [Publishing contract data](https://www.gov.uk/government/publications/open-standards-for-government/open-contracting-data-standard-profile)  
+* [Publishing government documents](https://www.gov.uk/government/publications/open-standards-for-government/viewing-government-documents)  
+* [Publishing grant data](https://www.gov.uk/government/publications/open-standards-for-government/data-standard-for-grant-making)  
+* [Publishing international development data](https://www.gov.uk/government/publications/open-standards-for-government/open-standard-for-international-development-data)  
+* [Publishing job vacancies](https://www.gov.uk/government/publications/open-standards-for-government/publishing-vacancies-online-standards-profile--2) 
+
+Recommended :  
+
+  * [Describing RESTful APIs with OpenAPI 3](https://www.gov.uk/government/publications/recommended-open-standards-for-government/describing-restful-apis-with-openapi-3)  
+  * [Tabular data standard](https://www.gov.uk/government/publications/recommended-open-standards-for-government/tabular-data-standard)  
+  * [Using metadata to describe data shared within government](https://www.gov.uk/government/publications/recommended-open-standards-for-government/using-metadata-to-describe-data-shared-within-government)  
+  * [Using metadata to describe tabular data for publishing](https://www.gov.uk/government/publications/recommended-open-standards-for-government/using-metadata-to-describe-tabular-data-for-publishing)  
+  * [Using metadata to describe CSV data](https://www.gov.uk/government/publications/recommended-open-standards-for-government/using-metadata-to-describe-csv-data) 
+
+**MER 3.2** Where applicable, use UK Government [Information Exchange Standard v4 (IES4)](https://github.com/dstl/IES4/blob/master/introduction.md) as the common vocabulary for data/information exchanges between knowledge stores. IES was developed by the UK Government with contributions from Dstl, Ministry of Defence, Metropolitan Police Service, Foreign & Commonwealth Office, Home Office, Department for Business and Trade and HMRC. The purpose of the IES is to make information exchange easier by providing a common vocabulary for data/information exchanges between knowledge stores. Information from each store is converted to/from the common vocabulary when it travels. Users and systems no longer need to understand many different formats and schemas. Each system only has to understand the relation between its own internal model and that of the IES, dramatically reducing complexity.
+
+**MER 3.3** Check for existing APIs \- Confirm that functionality required for all new APIs that are proposed to be built are not already covered by APIs listed in the [cross-government UK API Catalogue](https://www.api.gov.uk/#uk-public-sector-apis) and Informatica Data Catalogue, providing that any API you choose to use will work for your use case, in terms of licensing and functionality.
+
+**MER 3.4** Confirm that new API designs follow list of endorsed standards in the Data Standards Authority (DSA) [Data Standards Catalogue](https://alphagov.github.io/data-standards-authority/standards/) with particular reference to; 
+
+* [ISO 8601 standard](https://www.gov.uk/government/publications/open-standards-for-government/date-times-and-time-stamps-standard), which represents the date and time in your API’s payload response, helping people to read the time correctly  
+* Use of UK Geospatial Commission’s [UK Geospatial Data Standards Register](https://www.gov.uk/government/publications/uk-geospatial-data-standards-register/national-geospatial-data-standards-register) for geospatial identifiers, metadata, data format, data content, coordinate reference systems, coordinate reference system transformation and data services
+
+**MER 3.5** Confirm adherence to CDDO [API technical and data standards](https://www.gov.uk/guidance/gds-api-technical-and-data-standards) 
+
+* Confirm API-first design approach  
+* For new API’s, confirm use of REST or where REST is not appropriate, approved justification for deviation from this   
+* For API’s made available via off-the-shelf products, confirm API’s are available and where those API’s do not conform to REST, that building a REST API will be possible in future  
+* Confirm use of [OpenAPI Specification](https://swagger.io/specification/) to document your APIs
+
+**MER 3.6** Plans are in place to ensure that in the long term, data is not dependent on the lifecycle of your technology or service, i.e. ensure you
+
+* use platform independent data formats  
+* use enterprise data models and ontologies (see MER 3.1, 3.2)   
+* use schematics that describe how data is processed in your system   
+* have good documentation on data pipelines 
+
+## Reusable
+
+Datasets are well-documented and provided with sufficient metadata to enable discoverability and reuse, with CDDO guidance adopted for metadata standards. 
+
+Data is traceable, with provenance and lineage known and recorded, including origin, sources, transformations and changes. 
+
+Any required permissions or restrictions associated with Data sharing or reuse are recorded. 
+
+**MER 4.1** Provide a statement confirming adherence to CDDO [guidelines](https://www.gov.uk/guidance/be-open-and-use-open-source) on ‘working in open’ and publishing your data with respect to all the following guidance, principles, standards and Code of Practice(CoP) 
+
+* [Open Data Principles](https://opendatacharter.net/) to ensure your data is open by default  
+* [Government metadata standards](https://www.gov.uk/government/collections/metadata-standards-for-sharing-and-publishing-data) to improve data sharing across government  
+* [Information Commissioner’s Office Code of Practice for data sharing](https://ico.org.uk/media/for-organisations/documents/1068/data_sharing_code_of_practice.pdf) to ensure you make the right decisions when sharing personal data  
+* CDDO guidance on [managing your data for access and reuse](https://www.gov.uk/guidance/manage-your-data-for-access-and-reuse)
+
+**MER 4.2** Avoid data duplication wherever practicable \- Confirm that data is not already available (partially or in full and maintained with an availability guarantee). Where data is partially available, confirm you will avoid duplication by linking to the available data rather than making unnecessary copies. 
+
+**MER 4.3** Data at the object level is traceable, with a view to making provenance and lineage known and recorded, including origin, sources, transformations and changes. Where appropriate provide provenance metadata to upstream systems/services. 
+
+This means that data in your system will be further described by metadata \- i.e. data will be stored with metadata, so its source, quality and timeliness can be understood by people and systems. In this way data can be used more accurately and safely by users and developers.  
+A standard metadata model will be adopted, e.g. [Dublin Core](https://www.dublincore.org/specifications/dublin-core/usageguide/elements/). Metadata will be held to represent: 
+
+* [identifier](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/terms/identifier/)  
+* the organisation [creating](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/terms/creator/) the data   
+* the [source](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/source) system  
+* date and time [created](http://purl.org/dc/terms/created)  
+* data and time loaded into the system ([dateAccepted](http://purl.org/dc/terms/dateAccepted))  
+* date and time [modified](http://purl.org/dc/terms/modified)   
+* definition/[description](http://purl.org/dc/terms/description) of the data  
+* [audience](http://purl.org/dc/terms/audience) classification (with controlled vocabulary; public, available to the cabinet office, restricted access)  
+* [quality assessment](https://www.w3.org/TR/vocab-dqv/#dqv:qualityAssessment) (unvalidated, validated, trusted) 
+
+Where required by business case;
+
+* [provenance](http://purl.org/dc/terms/provenance) \- changes in ownership and custody of the resource since its creation and any transformations and changes that are significant for its authenticity, integrity, and interpretation. 
+
+**MER 4.4** Data will have audit trails that show how individual data records are accessed (unless there is a business case to disable this) and updated. There should be an agreed retention policy for audit data. 
+
+**MER 4.5** Where required by business case; store the data inputs, outputs and model versions \- the platform will be able to store the output of numerical models (including AI generated results) as well as the inputs brought into the system. There should be an agreed retention policy for this data.
+
+**MER 4.6** Agreeing and exiting supplier contracts **\-** When you are using a supplier:
+
+* Confirm that the contract provides you with access to all your data as part of the exit strategy within an agreed grace period.  
+* Confirm that the contract specifies the exit and renewal arrangements for your data;  
+* Confirm that the contract stipulates that the supplier returns all your data  
+  * in an open data standard format from the underlying database  
+  * through an API that follows the [API technical and data standards](https://www.gov.uk/guidance/gds-api-technical-and-data-standards). If you are agreeing a contract of over £20 million, the supplier must provide this API, as outlined in the [Model Services Contract guidance](https://www.gov.uk/government/publications/model-services-contract).
+
+## Compliant
+
+Our Data storage, processing and use comply with data protection and privacy regulations, and our obligations under the Public Records and Freedom of Information Acts. 
+
+Our policies and processes are regularly reviewed and updated in accordance with the evolving legislative and regulatory environment, and best practice, with regular audits to assure standards across the organisation. 
+
+The risk of non-compliant use of Data is further reduced by 
+
+* building in compliance at source within our technology and product design (such as auto-deletion in line with data retention policy), and 
+
+* mandatory training is given to all staff to ensure clarity on their obligations under GDPR when collecting, storing and processing personal (or other sensitive) data. 
+
+**MER 5.1** All projects collecting, processing and storing [personal data](#bookmark=id.1tuklin3pgae) must ensure that the solution design allows designated information officers or teams responsible for handling FOI and GDPR requests to comprehensively search, amend, export and delete all personal data and metadata (in line with [CO Information and Records Retention and Destruction Policy](https://intranet.cabinetoffice.gov.uk/task/00-guidance/records-lifecycle/#chapter_head)).
+
+**MER 5.2** All projects collecting, processing and storing personal data must complete the following documentation with advice from [CO Data Privacy and Compliance Team](https://peoplefinder.cabinetoffice.gov.uk/teams/data-privacy-and-compliance), and get it approved by the project programme SRO.  
+
+* [Data Protection Act 2018](https://www.gov.uk/data-protection) / [UK General Data Protection Regulation](https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/) (GDPR) statement of conformity  
+* [CO Data Protection Impact Assessment (DPIA)](https://intranet.cabinetoffice.gov.uk/task/personal-data-risk-management/) when assessing if you are following GDPR  
+* [Data Privacy Notice](https://intranet.cabinetoffice.gov.uk/task/what-is-a-privacy-notice-and-how-should-it-be-drafted/#chapter_head)
+
+
+**MER 5.3** Confirm you have engaged with the [CO Digital Knowledge & Information Management (DKIM) Team](https://peoplefinder.cabinetoffice.gov.uk/teams/digital-knowledge-and-information-management) and documented how you comply with the following regulations;
+
+* Public Records Act (see the Cabinet Office’s [*Information and Records Management*,](https://intranet.cabinetoffice.gov.uk/task/00-guidance/policy/#chapter_head) and [*Information and Records Retention & Destruction* Policies](https://intranet.cabinetoffice.gov.uk/task/00-guidance/records-lifecycle/#chapter_head))   
+* [Freedom of Information Act](https://ico.org.uk/for-organisations/foi-eir-and-access-to-information/guide-to-freedom-of-information/what-is-the-foi-act/), including the Code of Practice for Information and Records Management issued by the Secretary of State pursuant to s.46 of the Act
+
+**MER 5.4** Confirm you have engaged with the [CO Data Management Team (DM)](https://intranet.cabinetoffice.gov.uk/data-management-hub-refresh/) and documented how you comply with the following; 
+
+* [Open Data Principles](https://opendatacharter.net/)  
+* [2022 to 2025 roadmap for digital and data](https://www.gov.uk/government/publications/roadmap-for-digital-and-data-2022-to-2025/transforming-for-a-digital-future-2022-to-2025-roadmap-for-digital-and-data) especially Mission Three: Better Data to Power Decision Making  
+* [Government Data Standards](https://www.gov.uk/government/publications/essential-shared-data-assets-and-data-ownership-in-government) including governance and management  
+* [Government Metadata Standards](https://www.gov.uk/government/collections/data-standards-authority)
+
+**MER 5.5** Confirm you have engaged with the [CO Digital Assurance Team](mailto:co-eaa@cabinetoffice.gov.uk) and documented how you comply with the following points of the [Service Standards](https://www.gov.uk/service-manual/service-standard);
+
+* [Point 9\. Create a secure service which protects users’ privacy](https://www.gov.uk/service-manual/service-standard/point-9-create-a-secure-service)  
+* [Point 10\. Define what success looks like and publish performance data](https://www.gov.uk/service-manual/service-standard/point-10-define-success-publish-performance-data)  
+* [Point 11\. Choose the right tools and technology](https://www.gov.uk/service-manual/service-standard/point-11-choose-the-right-tools-and-technology)
+
+## Governed
+
+The Cabinet Office works in accordance with the Data Governance Framework, which outlines roles, responsibilities and processes for managing and governing data within the organisation. 
+
+All Data categories have clearly identifiable and accountable data owners, and lines of data decision making are clear. 
+
+Data quality is monitored and improved. 
+
+Digital heaps are prevented and, where discovered, are brought under control.
+
+**MER 6.1** Confirm you have engaged with [CO Data Management](https://intranet.cabinetoffice.gov.uk/data-management-hub-refresh/) with regards to the CO [Data Governance Framework](https://intranet.cabinetoffice.gov.uk/data-management-hub-refresh/) \- to ensure that data storage and lifecycle plan is aligned to the CO Data Management Guidance (plans, policies, programmes and practices).
+
+**MER 6.2** All data assets have clearly identifiable and accountable data owners (defaulting to SRO or Director General in absence of a delegate) and that lines of decision making are clear.
+
+**MER 6.3** [Digital heaps](https://codigital.blog.gov.uk/2023/01/16/conquering-the-digital-heap/) are identified with a view to agreeing plans with data owners and in consultation with [DKIM](https://peoplefinder.cabinetoffice.gov.uk/teams/digital-knowledge-and-information-management), to bring these under control \- i.e. ensure you register legacy digital heaps that you encounter with the DKIM team who will work with the data owners to put in plans to bring these under control.
+
+## Trustworthy
+
+The CDDO [Data Quality Framework](https://intranet.cabinetoffice.gov.uk/data-management-hub-refresh/data-management-hub-refresh-data-quality-framework/) is in place providing clear data quality principles and guidelines which ensure data quality is managed throughout its lifecycle according to the six data quality dimensions: accuracy, validity, reliability, relevance, timeliness and completeness.  
+
+We have established a culture of data quality, treating issues at source, with data improvement action plans in place for critical data, and commitment to ongoing monitoring and reporting. 
+
+From a user perspective, the data sourcing and quality is known, enabling appropriate judgements to be made on the confidence levels associated with data use and associated insight production.
+
+**MER 7.1** Confirm data owners have been made aware of their responsibilities regarding the CO [Data Quality Framework](https://intranet.cabinetoffice.gov.uk/data-and-information-management/data-strategy/data-quality-framework/). Data owners should be made conscious of the impact of data quality issues on the performance and operation of the technical solution being delivered. 
+
+**MER 7.2** Critical data is identified with a view to putting in place [data quality action plans](https://intranet.cabinetoffice.gov.uk/data-management-hub-refresh/data-management-hub-refresh-data-quality-framework/#actionplans) with due consideration given *to fitness for purpose*. 
+
+**MER 7.3** Consider use of tools (such as Informatica Data Quality) and processes for ongoing monitoring and reporting of data quality issues for critical data.
+
+**MER 7.4** Consider Data Quality Flags such that data sourcing and quality rating for source data and generated insights are clearly identifiable to users. Past experience shows the importance of capturing understanding such as whether datasets are revised and over what period of time a dataset might lag, e.g. within a time series the most recent few days of data points might have a lower confidence whereas data points older than a week might have a higher level of confidence.
+
+## Ethical
+
+We adhere to the CDDO Data Ethics Framework and guidance to ensure appropriate and responsible use of data when planning, implementing and evaluating a new policy or service. 
+
+We are conscious of bias and ambiguity in our data, and encourage our people to ask pertinent questions around the sourcing of the data, sample size, trustworthiness and sourcing. 
+
+Our people recognise that bias or errors can be compounded and/or masked in the production of insights, particularly within automated advanced analytics and AI. 
+
+Our practices ensure integrity in the presentation of data and objective use to inform decision making. Data is not used to give false justification to a predetermined preference or chosen course of action.  
+
+**MER 8.1** Confirm you have engaged with [CO Data Privacy and Compliance Team](https://peoplefinder.cabinetoffice.gov.uk/teams/data-privacy-and-compliance) regarding applicability of the [CDDO Data Ethics Framework](https://www.gov.uk/government/publications/data-ethics-framework).
+
+**MER 8.2** Projects that are heavily involved in production of government actionable insights generated from algorithms, advanced analytics and AI (including Generative AI) should completed the ‘[Data Ethics Framework Template](https://assets.publishing.service.gov.uk/media/5f607b9be90e070e32bd1a01/Data_Ethics_Framework_editable_template.odt)’ self-assessment for all of the Data Ethics Framework Principles (Transparency, Accountability, Fairness) as well as the ‘5 Specific Actions’;
+
+1. Define and understand public benefit and user need  
+2. Involve diverse expertise  
+3. Comply with the law  
+4. Review the quality and limitations of the   
+   1. Data  
+   2. Model  
+5. Evaluate and consider wider policy implications
+
+See ‘[How to use the Data Ethics Framework](https://www.gov.uk/government/publications/data-ethics-framework/data-ethics-framework-2020)’ for guidance on how to score each area.  
+
+This document should be kept with project records, published alongside other key documents, and shared with the CDDO Data Ethics Team (email to [data-ethics@digital.cabinet-office.gov.uk](mailto:data-ethics@digital.cabinet-office.gov.uk)) in order to help them gather case studies and measure the impact of the Framework.
+
+* Confirm that you have completed the [Data Ethics Framework Template](https://assets.publishing.service.gov.uk/media/5f607b9be90e070e32bd1a01/Data_Ethics_Framework_editable_template.odt) and you have scored 4 or above in each point, otherwise confirm that you have consulted with the [CO Data Privacy and Compliance Team](https://peoplefinder.cabinetoffice.gov.uk/teams/data-privacy-and-compliance) and have agreed an improvement plan.
+
+**MER 8.3** All insights generated using advanced analytics and AI should be marked as such together with the confidence rating of the source data used to generate those insights.  
+   
+**MER 8.4**  Ensure your service has provisioned a process to ensure the scrutiny of data for bias and flag potential for bias and ambiguity. All potential risks associated with decision making based on ambiguous and biased data should be recorded with plans for mitigation of the risks.
+
+**MER 8.5** Where your system or service is using [algorithmic tools](#bookmark=id.6i51o9fd90v4) that either have a significant influence on a decision-making process with direct or indirect public effect, or directly interacts with the general public, ensure that you have completed an [Algorithmic Transparency Record](https://www.gov.uk/algorithmic-transparency-records) (ATR) in accordance with the [Algorithmic Transparency Recording Standard](https://www.gov.uk/government/collections/algorithmic-transparency-recording-standard-hub) (ATRS).
+
+## Proportionate
+
+We are judicious in our use of Data, only capturing, storing and processing that which is deemed necessary in pursuit of our organisational goals. Raw or pre-processed datasets are not captured opportunistically: rather, data acquisition is targeted in a manner that enables the required insights to be produced. 
+
+We have robust retention and disposal arrangements for both data and information, and well defined processes and thresholds for determining that which should be retained for archiving in the public interest. 
+
+We consider, and where possible seek to minimise the financial costs and environmental impact of our decisions to capture, store and process Data. This is particularly important for enterprise level policies and processes, and strategic technical investments relating to Data, where the financial and environmental impacts can be significant. 
+
+**MER 9.1** Confirm that you have documentation to show that you will only hold data (including raw or pre-processed datasets) for specified purposes and defined retention period; in line with; 
+
+* [CO Information and Records Retention and Destruction Policy](https://intranet.cabinetoffice.gov.uk/task/00-guidance/records-lifecycle/#chapter_head)  
+* GDPR retention principle: with regards to personal data ensure compliance with UK GDPR which states that personal data must only be processed for the time required to achieve the aim for which it was collected, after which it must be deleted. 
+
+**MER 9.2** In order to ensure you only keep data for as long as necessary (in line with [CO Information and Records Retention and Destruction Policy](https://intranet.cabinetoffice.gov.uk/task/00-guidance/records-lifecycle/#chapter_head)), confirm you have provisioned for a process to help decide when to update, delete, retire or archive data. You should have processes to:
+
+* decide when it is right for your organisation to retire or archive data  
+* decide what data you can delete and replace with new or updated data  
+* meet the GDPR requirement to delete/amend an individual’s data on their request  
+* securely delete data when it’s no longer needed
+
+**MER 9.3** Confirm that data that falls under GDPR will not be reusable outside of your service without the data subject being aware of its further use (outside of your service) and following active [notification](https://intranet.cabinetoffice.gov.uk/task/what-is-a-privacy-notice-and-how-should-it-be-drafted/) to the user about potential reuse (i.e. active rather than passive notification). 
+
+**MER 9.4** Auto-deletion: Confirm you have provisioned for a process for deletion of data in line with the data retention [policy](https://intranet.cabinetoffice.gov.uk/task/00-guidance/records-lifecycle/#chapter_head) with a view to implementing **auto-deletion**, where a data retention policy has been agreed.
+
+## Secure
+
+Our Data is protected against breaches of Confidentiality, Integrity, and Availability, through measures such as access controls, encryption, and data loss prevention tools. 
+
+Data is protected and handled by an informed workforce, who have received mandatory training on security best practices and data protection.
+
+Our technical estate is protected and monitored against cyber security attacks.
+
+Data breaches are promptly detected, investigated and reported, with lessons learned used to further drive down risks across our Data estate. 
+
+All new data handling solutions embed [Privacy](https://www.gov.uk/guidance/make-privacy-integral) and [Security](https://www.security.gov.uk/guidance/secure-by-design/principles/) by design in their architecture and implementation. 
+
+**MER 10.1** Confirm you have engaged with the [Cyber Security](https://sites.google.com/cabinetoffice.gov.uk/cybersecurity/home) and [Data Security](https://intranet.cabinetoffice.gov.uk/data-and-information-management/) Teams to document adherence to [CO Cyber Security Policy](https://sites.google.com/cabinetoffice.gov.uk/cybersecurity/cyber-security-policies/cyber-security-policies) and [CO Data Security Policy](https://docs.google.com/document/d/1zdl4R6fzMV-pQ0_oy1ZzsVk0XiNcPXqa2brmmzigGpw/edit). 
+
+* CO Cyber Security policy in CO is based on NCSC [Cyber Assessment Framework (CAF)](https://www.ncsc.gov.uk/collection/caf) with particular reference to B2 \- Data Security.
+
+**MER 10.2** The platform will have fine grained access controls appropriate to the level of the risk applicable to the system which may include: 
+
+* Data segregation \- the system will provide the capability to restrict access to data sets between users.  
+* Role Based Access Control (RBAC) \- the system will be able to restrict access to certain groups of people based on the attributes of the data set.  
+* Attribute Based Access Control (ABAC) \- the system will be able to restrict access to attributes of a data item (e.g. column in a table) to certain groups of people based on attributes of the user (as required by business case \- e.g. if only 1 attribute is restricted to a user then only hide that attribute from the user rather than hiding the whole row of data).   
+* Access to data must be granted based on the Principle of least Privilege (PoLP), including access by developers and system administrators. See CO [Identity and Access Control Policy](https://docs.google.com/document/d/14y_mb7Rfag-XrL-2uqbnaAnlmxOA1ZSYLbQ0WF3Hsjk/edit)
+
+**MER 10.3** Data at rest is protected using encryption. This must include backups and operational replicas.
+
+* Data stored in the system will be encrypted at rest using the [approved/vetted](https://www.ncsc.gov.uk/collection/in-house-public-key-infrastructure/pki-principles/use-current-strong-cryptographic-algorithms) encryption mechanisms built into the cloud or on-prem storage. The keys will be managed using the vendor [key management](https://cheatsheetseries.owasp.org/cheatsheets/Key_Management_Cheat_Sheet.html) software. The cloud vendor will provide documentary evidence that their human and technical systems meet the security [standards](https://www.ncsc.gov.uk/collection/cloud/the-cloud-security-principles/principle-2-asset-protection-and-resilience#rest) set by the government.   
+* Ensuring that data is encrypted at rest and protects the data from being used at the infrastructure level. For example, copying the data files by getting access to administrative permissions of the cloud platform, encryption creates a substantial hurdle to overcome to make use of the raw data if it was copied inappropriately.
+
+**MER 10.4** Data in transit is protected using TLS protocols (version 1.2 or higher as [recommended by National Cyber Security Centre (NCSC](https://www.ncsc.gov.uk/guidance/using-tls-to-protect-data)) \- For example services reading across the network will use TLS compliant services. This defends the system against malicious actors intercepting packets from the network and then making use of the data. Only services supporting TLS will be used.
+
+**MER 10.5** With regards to APIs; confirm adherence to NCSC guidance on [designing services securely](https://www.ncsc.gov.uk/collection/cyber-security-design-principles) with particular reference to:
+
+1. Data level security \- making sure users only have access to the data provided by the API that they are authorised to see  
+2. Application level security \- making sure only authorised users can access the API  
+3. Auditing \- making sure the usage of the API is monitored
+
+**MER 10.6** Confirmation that API hosting location is aligned to [CO Hosting Strategy](https://docs.google.com/document/d/1HHAKjnvCsKuPpCgO-Eo8Ua21nQsdw9XTlXroNcRwG0A/edit#heading=h.fkvz5fq8b7im)
+
+**MER 10.7** [CO Information Assurance](mailto:ia@cabinetoffice.gov.uk) function has assessed the solution/service and  produced an Information Assurance Report as set out in the [GovAssure](https://www.security.gov.uk/guidance/govassure/) assurance approach.
+
+**MER 10.8** Confirm you have considered all of the 12 points in [ICO Data Protection by Design & Default](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/guide-to-accountability-and-governance/accountability-and-governance/data-protection-by-design-and-default/) checklist. 
+
+**MER 10.9** Confirm you have considered NCSC guidance on [data loss prevention](https://www.ncsc.gov.uk/guidance/reducing-data-exfiltration-by-malicious-insiders) and completed NCSC [Baseline assessment of exfiltration techniques](https://www.ncsc.gov.uk/guidance/reducing-data-exfiltration-by-malicious-insiders#section_5).
+
+**MER 10.10** With regards to offshoring and data residency confirm that you have sign-off from the service owner for where your data will reside. 
+
+According to the [CDDO Guidance on Cloud for the Public Sector](https://www.gov.uk/government/publications/cloud-guide-for-the-public-sector/cloud-guide-for-the-public-sector#offshoring-and-data-residency); 
+
+* Offshoring is where any part of the service you are receiving, relating to data you are storing, is conducted outside of the UK. This includes where data and services are physically located, who manages the services, and who has access to the data. It also includes when your data resides in the UK but might be accessed by provider personnel based in other countries.  
+* There is no government policy which directly prevents departments or services from storing cloud-based data in any specific country, however you need to consider the implications of where you host your data. It is the responsibility of each government department to take risk-based decisions about their use of cloud providers for the storage of government data.
+
+# MERs Scorecard (v1.0)
+
+## Scoring Criteria
+
+| Priority | Points |
+| :---- | :---- |
+| M \- Must have | 4 |
+| S \- Should have | 3 |
+| C \- Could have | 2 |
+| W \- Wish/nice to have | 1 |
+
+## Evaluation
+
+Use the [Data MERs Scorecard Spreadsheet](https://docs.google.com/spreadsheets/d/15tDp08pfjj29CEm5GzsOjImQNmfjq4D16JamPfYAVkc/edit?usp=sharing) to score your solution/service against the Minimum Enterprise Requirements for Data. 
+
+## Evaluation
+
+Use the [Data MERs Scorecard Spreadsheet](https://docs.google.com/spreadsheets/d/15tDp08pfjj29CEm5GzsOjImQNmfjq4D16JamPfYAVkc/edit?usp=sharing) to score your solution/service against the Minimum Enterprise Requirements for Data. 
+
+Notes: 
+
+* Where an exception or mitigation has been approved, a full score will be awarded for the purposes of evaluation. Likewise, where a requirement is not applicable, award the full score for the purposes of evaluation. Exception/mitigation approvals will be recorded in the TDA Decisions Log.  
+    
+* Create a copy of and complete the [Data MERs Scorecard Spreadsheet](https://docs.google.com/spreadsheets/d/15tDp08pfjj29CEm5GzsOjImQNmfjq4D16JamPfYAVkc/edit?usp=sharing) for your TDA submission. This allows you to record comments/observations against each requirement. The final score will be automatically updated at the end of the scorecard.
+
+Following table given here for reference.
+
+<table>
+    <thead>
+        <tr>
+            <th>MER</th>
+            <th>Headline</th>
+            <th>Priority</th>
+            <th>Exception/ Mitigation Approved by</th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="5"><strong>Findable</strong></td>
+        </tr>
+        <tr>
+            <td>1.1.1</td>
+            <td>ESDA (datasets and services) are catalogued</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.1.2</td>
+            <td>Use Informatica Cloud Data Catalogue (ICDC)</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.1.3</td>
+            <td>Catalogue tool training & maintenance</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.2</td>
+            <td>Use Data Catalogue Vocabulary (DCAT)</td>
+            <td>S</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.3</td>
+            <td>All key data objects are identified by a Golden Record</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="5"><strong>Accessible</strong></td>
+        </tr>
+        <tr>
+            <td>2.1</td>
+            <td>Data is ready to share across government</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2.2</td>
+            <td>Interfaces for humans and machines</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2.3</td>
+            <td>Access to sensitive data via authentication and authorisation</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2.4</td>
+            <td>Open data is accessible to public</td>
+            <td>S</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2.5</td>
+            <td>Data usage licences/MOUs</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2.6</td>
+            <td>Data is searchable</td>
+            <td>S</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="5"><strong>Interoperable</strong></td>
+        </tr>
+        <tr>
+            <td>3.1</td>
+            <td>Open Standards for government data</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3.2</td>
+            <td>EIS4 vocabulary for data exchange</td>
+            <td>S</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3.3</td>
+            <td>Check for existing APIs</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3.4</td>
+            <td>Use DSA API open data standards</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3.5</td>
+            <td>Use CDDO API design standards</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3.6</td>
+            <td>Data is independent of technology/service</td>
+            <td>S</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="5"><strong>Reusable</strong></td>
+        </tr>
+        <tr>
+            <td>4.1</td>
+            <td>CDDO ‘working in open’ guidelines</td>
+            <td>S</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>4.2</td>
+            <td>Avoid data duplication</td>
+            <td>S</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>4.3</td>
+            <td>Traceability of data at record level</td>
+            <td>S</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>4.4</td>
+            <td>Audit trails for data updates and access</td>
+            <td>S</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>4.5</td>
+            <td>Store the data inputs, outputs and model versions</td>
+            <td>C</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>4.6</td>
+            <td>Supplier contracts provide access to data</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="5"><strong>Compliant</strong></td>
+        </tr>
+        <tr>
+            <td>5.1</td>
+            <td>FOI / GDPR request fulfilment functionality</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>5.2</td>
+            <td>Personal data documentation</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>5.3</td>
+            <td>DKIM regulations</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>5.4</td>
+            <td>DM principles and standards</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>5.5</td>
+            <td>Digital Assurance Service Standards</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="5"><strong>Governed</strong></td>
+        </tr>
+        <tr>
+            <td>6.1</td>
+            <td>Data Governance Framework</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>6.2</td>
+            <td>Data owners assigned</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>6.3</td>
+            <td>Digital heaps management</td>
+            <td>C</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="5"><strong>Trustworthy</strong></td>
+        </tr>
+        <tr>
+            <td>7.1</td>
+            <td>Data Quality Framework</td>
+            <td>S</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>7.2</td>
+            <td>Data quality action plans</td>
+            <td>S</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>7.3</td>
+            <td>Data quality tooling</td>
+            <td>C</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>7.4</td>
+            <td>Data quality flags</td>
+            <td>C</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="5"><strong>Ethical</strong></td>
+        </tr>
+        <tr>
+            <td>8.1</td>
+            <td>Data Ethics Framework</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>8.2</td>
+            <td>Data Ethics Self Assessment</td>
+            <td>C</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>8.3</td>
+            <td>AI flag and source confidence ratings</td>
+            <td>C</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>8.4</td>
+            <td>Flag potential for bias & ambiguity</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>8.5</td>
+            <td>Algorithmic Transparency Record</td>
+            <td>S</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="5"><strong>Proportionate</strong></td>
+        </tr>
+        <tr>
+            <td>9.1</td>
+            <td>Data retention agreement</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>9.2</td>
+            <td>Data retention processes</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>9.3</td>
+            <td>Personal data reuse notifications under GDPR</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>9.4</td>
+            <td>Data auto-deletion process</td>
+            <td>S</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="5"><strong>Secure</strong></td>
+        </tr>
+        <tr>
+            <td>10.1</td>
+            <td>Cyber Security & Data Security policies</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>10.2</td>
+            <td>Fine grained access controls</td>
+            <td>S</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>10.3</td>
+            <td>Encryption at rest</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>10.4</td>
+            <td>Encryption in transit</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>10.5</td>
+            <td>API security</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>10.6</td>
+            <td>API hosting location is aligned to CO Hosting Strategy</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>10.7</td>
+            <td>Information Assurance Report</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>10.8</td>
+            <td>ICO Data Protection by Design checklist</td>
+            <td>C</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>10.9</td>
+            <td>Data loss prevention guidance and checklist</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>10.10</td>
+            <td>Service owner sign-off on offshoring & data residency</td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="2"></td>
+            <td><strong>FINAL SCORE</strong></td>
+            <td></td>
+            <td><strong>%</strong></td>
+        </tr>
+    </tbody>
+</table>
