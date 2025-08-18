@@ -1,0 +1,42 @@
+current directory: /Users/kayleigh.rogerson/digital-handbook/vendor/bundle/ruby/3.2.0/gems/io-event-1.5.1/ext
+/Users/kayleigh.rogerson/.rbenv/versions/3.2.3/bin/ruby extconf.rb
+checking for rb_ext_ractor_safe()... yes
+checking for &rb_fiber_transfer()... yes
+checking for -luring... no
+checking for sys/epoll.h... no
+checking for sys/event.h... yes
+checking for sys/eventfd.h... no
+checking for rb_io_descriptor()... yes
+checking for &rb_process_status_wait()... no
+checking for rb_fiber_current()... yes
+checking for &rb_fiber_raise()... yes
+checking for epoll_pwait2()... no
+checking for ruby/io/buffer.h... yes
+creating extconf.h
+creating Makefile
+
+current directory: /Users/kayleigh.rogerson/digital-handbook/vendor/bundle/ruby/3.2.0/gems/io-event-1.5.1/ext
+make DESTDIR\= sitearchdir\=./.gem.20250814-30395-6lhd1u sitelibdir\=./.gem.20250814-30395-6lhd1u clean
+
+current directory: /Users/kayleigh.rogerson/digital-handbook/vendor/bundle/ruby/3.2.0/gems/io-event-1.5.1/ext
+make DESTDIR\= sitearchdir\=./.gem.20250814-30395-6lhd1u sitelibdir\=./.gem.20250814-30395-6lhd1u
+compiling ./io/event/event.c
+compiling ./io/event/selector/selector.c
+compiling ./io/event/selector/kqueue.c
+./io/event/selector/kqueue.c:374:2: warning: incompatible pointer types assigning to 'struct IO_Event_Selector_KQueue *' from 'struct IO_Event_Selector_EPoll *' [-Wincompatible-pointer-types]
+  374 |         TypedData_Get_Struct(self, struct IO_Event_Selector_EPoll, &IO_Event_Selector_KQueue_Type, selector);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/kayleigh.rogerson/.rbenv/versions/3.2.3/include/ruby-3.2.0/ruby/internal/core/rtypeddata.h:508:13: note: expanded from macro 'TypedData_Get_Struct'
+  508 |     ((sval) = RBIMPL_CAST((type *)rb_check_typeddata((obj), (data_type))))
+      |             ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 warning generated.
+compiling ./io/event/interrupt.c
+linking shared-object IO_Event.bundle
+ld: warning: ignoring duplicate libraries: '-lruby.3.2'
+
+current directory: /Users/kayleigh.rogerson/digital-handbook/vendor/bundle/ruby/3.2.0/gems/io-event-1.5.1/ext
+make DESTDIR\= sitearchdir\=./.gem.20250814-30395-6lhd1u sitelibdir\=./.gem.20250814-30395-6lhd1u install
+/usr/bin/install -c -m 0755 IO_Event.bundle ./.gem.20250814-30395-6lhd1u
+
+current directory: /Users/kayleigh.rogerson/digital-handbook/vendor/bundle/ruby/3.2.0/gems/io-event-1.5.1/ext
+make DESTDIR\= sitearchdir\=./.gem.20250814-30395-6lhd1u sitelibdir\=./.gem.20250814-30395-6lhd1u clean
