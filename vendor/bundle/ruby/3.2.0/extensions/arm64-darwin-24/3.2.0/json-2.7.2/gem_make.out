@@ -1,0 +1,16 @@
+current directory: /Users/kayleigh.rogerson/digital-handbook/vendor/bundle/ruby/3.2.0/gems/json-2.7.2/ext/json
+/Users/kayleigh.rogerson/.rbenv/versions/3.2.3/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/kayleigh.rogerson/digital-handbook/vendor/bundle/ruby/3.2.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20250814-30395-a20a9a sitelibdir\=./.gem.20250814-30395-a20a9a clean
+
+current directory: /Users/kayleigh.rogerson/digital-handbook/vendor/bundle/ruby/3.2.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20250814-30395-a20a9a sitelibdir\=./.gem.20250814-30395-a20a9a
+make: Nothing to be done for `all'.
+
+current directory: /Users/kayleigh.rogerson/digital-handbook/vendor/bundle/ruby/3.2.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20250814-30395-a20a9a sitelibdir\=./.gem.20250814-30395-a20a9a install
+
+current directory: /Users/kayleigh.rogerson/digital-handbook/vendor/bundle/ruby/3.2.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20250814-30395-a20a9a sitelibdir\=./.gem.20250814-30395-a20a9a clean
