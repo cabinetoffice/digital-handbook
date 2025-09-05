@@ -10,34 +10,33 @@ review_in: 6 months
 AWS administrators in the Cabinet Office hold a critical responsibility for the security, compliance, and efficient operation of organisational cloud infrastructure. Granting administrative access to untrained personnel introduces significant risks across cybersecurity, data protection, compliance, and financial domains. To mitigate these risks, strict requirements and responsibilities are established.
 <br>
 
-## Risks of Inadequate Access Management
+## **Risks of Inadequate Access Management**
 
-#### Cybersecurity Risks
+#### **Cybersecurity Risks**
 
 * Increased vulnerability to cyber threats due to misconfigured security settings.  
 * Susceptibility to unauthorised access, privilege escalation, or misuse from over-privileged permissions.  
 * Potential exploitation by malicious actors or accidental mishandling.
 
-#### Data Breach Risks
+#### **Data Breach Risks**
 
 * Greater chance of unintentional data exposure or deletion caused by excessive access rights.  
 * Risk of unauthorised data access due to improper permission controls.  
 * Possible data leaks or loss impacting organisational confidentiality and compliance.
 
-#### Compliance Risks
+#### **Compliance Risks**
 
 * Non-compliance with standards such as GDPR, Cyber Essentials, and other regulations due to overly broad permissions.  
 * Failure to maintain audit trails or proper documentation of access rights.  
 * Breach of organisational policies linked to least privilege principles.
 
-#### Financial Risks
+#### **Financial Risks**
 
 * Excessive resource utilisation or mismanagement leading to inflated costs.  
 * Risk of unauthorised resource consumption, resulting in unexpected billing increases.  
 * Additional costs from incident response, remediation actions, and legal penalties following security breaches.
 
-
-### Recommended Security Practices
+### **Recommended Security Practices**
 
 * **Principle of Least Privilege:** Grant permissions only as necessary for specific tasks.  
 * **Role-Based Access Control:** Use roles to define permissions aligned with job responsibilities.  
@@ -47,57 +46,74 @@ AWS administrators in the Cabinet Office hold a critical responsibility for the 
 
 ---
 
-## Requirements for AWS Administrators – Cabinet Office
+## **Requirements for AWS Administrators – Cabinet Office**
 
-#### 1\. Technical Competence
+#### **1\. Technical Competence**
 
 * Proven experience with AWS architecture, services, and infrastructure management.  
 * In-depth knowledge of core AWS services (EC2, S3, IAM, RDS, VPC, etc.).
 
-#### 2\. Security and Compliance Knowledge
+#### **2\. Security and Compliance Knowledge**
 
 * Strong understanding of security best practices and regulatory requirements.  
 * Ability to implement and manage IAM policies, encryption, and security groups effectively.
 
-#### 3\. Certifications (Highly Recommended)
+#### **3\. Certifications (Highly Recommended)**
 
 * AWS Certified Solutions Architect, AWS Certified SysOps Administrator, or recognised equivalent.
 
-#### 4\. Security Clearance
+#### **4\. Security Clearance**
 
 * Must hold SC (Security Check) or DV (Developed Vetting) clearance.
 
-#### 5\. Organisation and Governance
+#### **5\. Organisation and Governance**
 
 * Must follow the Cabinet Office Digital Handbook for AWS account management and adhere to governance policies.
 
-#### 6\. Identity Verification
+#### **6\. Identity Verification**
 
 * Must have a valid Cabinet Office or organisational email address for contact and organisational correspondence.
 
----
+## **Responsibilities of AWS Administrators**
 
-### Responsibilities of AWS Administrators
+* **Cloud Infrastructure Management:** Develop, configure, and maintain AWS resources aligned with organisational needs.  
+* **Security and Access Control:** Manage IAM policies, security groups, encryption, and security best practices.  
+* **Performance Monitoring & Optimisation:** Continuously evaluate resource utilisation, optimise costs, and enhance system performance.  
+* **Backup & Disaster Recovery:** Implement and maintain backup solutions and disaster recovery plans.  
+* **Compliance & Documentation:** Ensure compliance with policies and regulations; maintain detailed records of configurations and operational procedures.  
+* **Troubleshooting & Incident Response:** Diagnose issues swiftly and respond effectively to security incidents or outages.  
+* **Automation & Change Management:** Use scripting tools, CloudFormation, Terraform, or similar to automate deployment and manage organisational changes with minimal disruption.  
+* **User Account Management:** Create, modify, and deactivate user accounts, ensuring adherence to least privilege principles.  
+* **Continuous Improvement:** Keep abreast of new AWS features, security standards, and best practices; recommend improvements accordingly.
 
-* **Cloud Infrastructure Management:**  
-  Develop, configure, and maintain AWS resources aligned with organisational needs.  
-* **Security and Access Control:**  
-  Manage IAM policies, security groups, encryption, and security best practices.  
-* **Performance Monitoring & Optimisation:**  
-  Continuously evaluate resource utilisation, optimise costs, and enhance system performance.  
-* **Backup & Disaster Recovery:**  
-  Implement and maintain backup solutions and disaster recovery plans.  
-* **Compliance & Documentation:**  
-  Ensure compliance with policies and regulations; maintain detailed records of configurations and operational procedures.  
-* **Troubleshooting & Incident Response:**  
-  Diagnose issues swiftly and respond effectively to security incidents or outages.  
-* **Automation & Change Management:**  
-  Use scripting tools, CloudFormation, Terraform, or similar to automate deployment and manage organisational changes with minimal disruption.  
-* **User Account Management:**  
-  Create, modify, and deactivate user accounts, ensuring adherence to least privilege principles.  
-* **Continuous Improvement:**  
-  Keep abreast of new AWS features, security standards, and best practices; recommend improvements accordingly.
+## **Administrator Availability and Service Resilience**
 
----
+#### **Principle**
 
-Adherence to these minimum requirements and responsibilities ensures the delivery of a secure, reliable, and efficient AWS environment. Regular review, training, and organisational oversight are vital to maintaining best practices within the Cabinet Office infrastructure. 
+To ensure the continuous operation and security of Cabinet Office services, each team is responsible for maintaining constant availability of qualified AWS administrators. This is essential for enabling a swift and effective response to emerging threats, security incidents, or critical operational issues.
+
+#### **Minimum Administrator Coverage and the Principle of Least Access**
+
+To ensure both security and operational resilience, our approach to administrator access is founded on the **Principle of Least Access**. This principle, as defined by the GDS Way, dictates that individuals are not granted standing permissions. Instead, they are given the ability to assume a role with elevated privileges only when required to perform a specific, time-bound task. This model allows us to reconcile the need for resilience with the Principle of Least Privilege.
+
+* **Ensuring Redundancy:** To safeguard against single points of failure (e.g., due to unexpected absence or staff attrition), it is required that **more than one individual per team** meets the criteria for administrator access outlined in the 'Requirements for AWS Administrators' section. These individuals should be capable of assuming an administrative role when a need arises.  
+* **Case-by-Case Justification:** While multiple team members must be eligible, they should not hold permanent or standing administrator privileges. The Team Lead or Service Owner is responsible for assessing their service's specific needs and formally documenting the justification for the number of personnel who are granted the ability to assume an administrative role.  
+* **Documented Escalation:** For all services, a documented and understood emergency escalation path must be in place to ensure a qualified individual can assume an administrative role swiftly in response to an incident.
+
+The final decision on the number of eligible administrators and its justification must be recorded and reviewed periodically as part of the service's governance.
+
+#### **Management of Administrator Cover**
+
+Team Leads and/or Service Owners are responsible for proactively managing administrator availability.
+
+* **Planned Absence:** Schedules for planned leave (e.g., annual leave) must be monitored to ensure that continuous administrator coverage is maintained. Where a potential gap is identified, another team member who meets the required criteria must be assigned and made aware of their responsibilities for the duration of the absence.  
+* **Unexpected Absence:** The requirement for multiple qualified administrators serves as the primary control for mitigating risks from short-notice absences, such as illness.
+
+#### **Out-of-Hours and On-Call Requirements**
+
+The requirement for out-of-hours administrator availability is determined by a service's designated criticality and its associated Service Level Agreement (SLA).
+
+* **Critical Services:** For services designated as business-critical or requiring 24/7/365 operation, an out-of-hour support contact and qualified AWS administrator must be available at all times to respond to incidents.  
+* **Standard Services:** For all other services, Team Leads must assess and document the risk of an out-of-hours incident, and a clear and documented emergency escalation path to a qualified administrator must be in place.
+
+Adherence to these minimum requirements and responsibilities ensures the delivery of a secure, reliable, and efficient AWS environment. Regular review, training, and organisational oversight are vital to maintaining best practices within the Cabinet Office infrastructure.
