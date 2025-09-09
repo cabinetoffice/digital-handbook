@@ -1,6 +1,6 @@
 ---
 title: AWS Administration Policy
-last_reviewed_on: 2025-08-18
+last_reviewed_on: 2025-09-09
 review_in: 6 months
 ---
 
@@ -8,7 +8,6 @@ review_in: 6 months
 
 
 AWS administrators in the Cabinet Office hold a critical responsibility for the security, compliance, and efficient operation of organisational cloud infrastructure. Granting administrative access to untrained personnel introduces significant risks across cybersecurity, data protection, compliance, and financial domains. To mitigate these risks, strict requirements and responsibilities are established.
-<br>
 
 ## **Risks of Inadequate Access Management**
 
@@ -44,9 +43,7 @@ AWS administrators in the Cabinet Office hold a critical responsibility for the 
 * **Training and Awareness:** Ensure all personnel with admin rights receive appropriate organisation-specific training.  
 * **Documentation:** Maintain comprehensive records of configurations, access rights, and changes.
 
----
-
-## **Requirements for AWS Administrators – Cabinet Office**
+## **Requirements for AWS Administrators: Cabinet Office**
 
 #### **1\. Technical Competence**
 
@@ -64,7 +61,7 @@ AWS administrators in the Cabinet Office hold a critical responsibility for the 
 
 #### **4\. Security Clearance**
 
-* Must hold SC (Security Check) or DV (Developed Vetting) clearance.
+* Must hold SC or DV clearance.
 
 #### **5\. Organisation and Governance**
 
@@ -92,9 +89,9 @@ AWS administrators in the Cabinet Office hold a critical responsibility for the 
 
 To ensure the continuous operation and security of Cabinet Office services, each team is responsible for maintaining constant availability of qualified AWS administrators. This is essential for enabling a swift and effective response to emerging threats, security incidents, or critical operational issues.
 
-#### **Minimum Administrator Coverage and the Principle of Least Access**
+#### **Minimum Administrator Coverage and the Principle of Least Privilege**
 
-To ensure both security and operational resilience, our approach to administrator access is founded on the **Principle of Least Access**. This principle, as defined by the GDS Way, dictates that individuals are not granted standing permissions. Instead, they are given the ability to assume a role with elevated privileges only when required to perform a specific, time-bound task. This model allows us to reconcile the need for resilience with the Principle of Least Privilege.
+To ensure both security and operational resilience, our approach to administrator access is founded on the [**Principle of Least Privilege**.](https://guidance.cabinetoffice.gov.uk/digital-handbook/docs/guidance/software/principle-least-privilege.html#principle-of-least-privilege) This principle dictates that individuals are not granted standing permissions. Instead, they are given the ability to assume a role with elevated privileges only when required to perform a specific, time-bound task. This model allows us to reconcile the need for resilience with the Principle of Least Privilege.
 
 * **Ensuring Redundancy:** To safeguard against single points of failure (e.g., due to unexpected absence or staff attrition), it is required that **more than one individual per team** meets the criteria for administrator access outlined in the 'Requirements for AWS Administrators' section. These individuals should be capable of assuming an administrative role when a need arises.  
 * **Case-by-Case Justification:** While multiple team members must be eligible, they should not hold permanent or standing administrator privileges. The Team Lead or Service Owner is responsible for assessing their service's specific needs and formally documenting the justification for the number of personnel who are granted the ability to assume an administrative role.  
@@ -111,7 +108,7 @@ Team Leads and/or Service Owners are responsible for proactively managing admini
 
 #### **Out-of-Hours and On-Call Requirements**
 
-The requirement for out-of-hours administrator availability is determined by a service's designated criticality and its associated Service Level Agreement (SLA).
+The requirement for out-of-hours administrator availability is determined by a service's designated criticality and its associated Service Level Agreement.
 
 * **Critical Services:** For services designated as business-critical or requiring 24/7/365 operation, an out-of-hour support contact and qualified AWS administrator must be available at all times to respond to incidents.  
 * **Standard Services:** For all other services, Team Leads must assess and document the risk of an out-of-hours incident, and a clear and documented emergency escalation path to a qualified administrator must be in place.
