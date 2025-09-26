@@ -1,0 +1,245 @@
+---
+title: Branching Strategies, Policies and Standards
+last_reviewed_on: 2025-09-26
+review_in: 9 months
+---
+
+# <%= current_page.data.title %>
+
+## Branching strategy
+
+A disciplined branching strategy is essential for effective version control. This guide sets out the required principles you must follow.
+
+#### **Core principles**
+
+You must follow these branching principles at all times:
+
+* Use short-lived feature branches for all new features and bug fixes.  
+* Merge feature branches into the `main` branch using pull requests.  
+* Keep the `main` branch high quality and up to date at all times.
+
+These principles prevent code conflicts and create a consistent workflow.
+
+### 
+
+## Branches
+
+This section details the types of branches you will use and the rules for managing them.
+
+#### **The main branch**
+
+The `main` branch is the standard default branch for all repositories. The code in the `main` branch must always pass tests, build cleanly, and be kept current. This ensures that all new feature branches start from a known, stable version of the code.
+
+You must not push changes directly to the `main` branch. All changes must be merged through a pull request.
+
+#### **Feature branches**
+
+You must develop all new features and bug fixes in `feature branches` (also known as topic branches). This isolates work in progress from the completed work in the `main` branch. Branches are inexpensive, so you should create a new one even for small fixes.
+
+#### **Naming feature branches**
+
+You must use a consistent naming convention for feature branches to identify the work being done. The required format links the branch to a ticket in the issue tracking system (like JIRA or Azure DevOps).
+
+The format is `ticketID-ticketTitle`.
+
+* `ticketID`: The unique identifier from the issue tracker.  
+* `ticketTitle`: A short, descriptive summary from the ticket title. You must replace any spaces in the title with hyphens (-).
+
+For example, for a ticket with ID `COPE-1333` and title "Deploy AFT version of AWS requests app into staging", the branch name must be:
+
+`COPE-1333-deploy-aft-version-of-aws-requests-app-into-staging`
+
+#### **Using feature flags**
+
+For features that take a long time to develop, use `feature flags`. This allows you to merge incomplete code into the `main` branch but keep it hidden from users until it is ready.
+
+#### **Release branches**
+
+Use `release branches` to coordinate and stabilise changes for a new release. Create a release branch from the `main` branch when you are close to a release, such as the end of a sprint.
+
+#### **Naming release branches**
+
+Give the branch a clear name that associates it with the release. For example: `release/20`.
+
+#### **Workflow for release branches**
+
+* Create the release branch from `main`.  
+* Fix any bugs on new branches created from the release branch.  
+* Merge these bug-fix branches back into the release branch using a pull request.  
+* Crucially, you must port any fixes made in the release branch back to the `main` branch in a separate pull request. This prevents regression in future development.
+
+#### **Deployment branches**
+
+You can manage deployments to different environments, like performance testing, in the same way you manage releases.
+
+Create branches with a clear naming convention, such as `deploy/performance-test`, and treat them like release branches. Any bug fixes made in a deployment branch must be cherry-picked back to the `main` branch.
+
+This does not apply if you are using continuous deployment.
+
+## Commits and pull requests
+
+This section explains the standards for creating commits and managing pull requests.
+
+#### **Writing commit messages**
+
+Well-written commit messages are crucial for communication and understanding the history of a project. Each commit should be `atomic`, meaning it is a self-contained, singular, logical change.
+
+A commit message must briefly summarise the 'what' but should focus on explaining the 'why' \- the rationale for the change.
+
+#### **Commit message structure**
+
+You must structure your commit messages as follows:
+
+* A one-line summary of 50 characters maximum. Use the imperative mood (for example, '*Add function to calculate totals*' not '*Added function*'). Do not end with a full stop.  
+* A blank line.  
+* A more detailed explanation, wrapped at 72 characters, explaining the reason for the change.
+
+You can link to an issue tracker, but this does not replace the need for a good commit message.
+
+#### **Using pull requests (PRs)**
+
+You must use pull requests to merge feature branches into the `main` branch. PRs are essential for peer review, improving code quality, and notifying stakeholders of changes.
+
+You should break large pieces of work into smaller, more manageable PRs.
+
+#### **PR author responsibilities**
+
+As the author of a PR, you are responsible for:
+
+* Ensuring your PR is reviewed and merged.  
+* Providing a clear title and detailed description so reviewers can understand the changes.  
+* Referencing any related issues.  
+* Including a link to a built or staged version of the changes so others can easily test them.  
+* Addressing all blocking comments from reviewers.
+
+#### **PR reviewer responsibilities**
+
+Your team should agree on expectations for reviewers and share review responsibilities across the team. Research shows that `two reviewers` is an optimal number.
+
+When reviewing a PR, you should:
+
+* Assess the purpose, scope, and technical approach.  
+* Check for adherence to programming style guides, consistency, and readability.  
+* Review library changes for backward compatibility and correct versioning.  
+* Examine third-party dependencies for reliability and necessity.  
+* Ensure tests provide adequate coverage, including for error cases.  
+* Consider the impact on deployment and documentation.  
+* Deliver feedback constructively, explaining your rationale and providing examples.
+
+## Branch policies and protection
+
+Branch policies protect important branches like `main` and enforce your team's standards for code quality and change management. A protected branch cannot be deleted, and all changes must go through a pull request.
+
+#### **Configuring branch protection rules**
+
+Project Administrators should set branch protection rules for `main` and any `release/*` branches. These are configured in `Repository Settings > Branches > Add rule`.
+
+You must enable the following rules:
+
+* **Require a pull request before merging**: Ensures all changes are reviewed.  
+* **Require approvals**: Set the number of required approving reviews (at least one is recommended).  
+* **Require status checks to pass before merging**: Mandates that all CI tests (builds, security scans) succeed.  
+* **Require branches to be up to date before merging**: Ensures the PR is tested against the latest version of the target branch.  
+* **Require conversation resolution before merging**: Ensures all review comments are addressed.  
+* **Do not allow force pushes**: Protects the branch history from being rewritten.  
+* **Do not allow deletions**: Prevents accidental deletion of critical branches.
+
+You may also consider enabling:
+
+* **Require signed commits**: Verifies the author of a commit using GPG keys.  
+* **Require linear history**: Prevents merge commits by encouraging squash or rebase merges for a cleaner history.  
+* **Include administrators**: Applies these rules to repository administrators.
+
+#### **Using a CODEOWNERS file**
+
+For more specific control over reviews, you can use a `CODEOWNERS` file. This file defines which individuals or teams are responsible for code in certain parts of the repository. When a PR modifies code with a designated owner, that person or team is automatically requested to review it.
+
+You can enforce this by enabling "Require review from Code Owners" in the branch protection rules. This is especially useful for critical paths, such as the `.github/workflows/` folder, to ensure any changes to CI/CD workflows are reviewed by the responsible team.
+
+## Release and deployment strategy
+
+A clear strategy for releases and deployments makes the process routine, predictable, and low-risk.
+
+#### **Tagging releases**
+
+You must use tags to mark significant points in the repository's history, especially releases. When you create a `GitHub Release`, it automatically generates a Git tag. This provides several benefits:
+
+* **Semantic Versioning**: The tag must follow semantic versioning (for example, `v1.0.0`).  
+* **Automated Release Notes**: Tags allow for the automatic generation of release notes by comparing the commit history between two tags.  
+* **Traceability**: Applying the tag version to build artifacts and container images creates a clear link between your source code, the release, and your deployed assets.
+
+#### **Adhering to Semantic Versioning (SemVer)**
+
+If a project is open source or its changes impact third parties, it must use a version number compatible with Semantic Versioning (`MAJOR.MINOR.PATCH`).
+
+* `MAJOR` version for incompatible API changes.  
+* `MINOR` version for new functionality that is backward-compatible.  
+* `PATCH` version for backward-compatible bug fixes.
+
+#### **Writing release notes and changelogs**
+
+If your changes will affect third parties (such as users of an API or library), you must publish `release notes`. For internal services, they are a valuable way to track changes.
+
+You must also provide a `changelog` if the changes impact third parties. This is a human-readable, chronological record of all significant changes for each version.
+
+#### **Release notes structure and style**
+
+Organise release notes with clear headings: `Breaking changes`, `New features`, `Deprecated features`, and `Bug fixes`.
+
+Write in a clear, concise style. Use the active voice and address users directly (‘You can now…’). Avoid team-centric language (‘We have fixed…’).
+
+## Secure development practices
+
+This section details the required practices for securing your CI/CD pipeline and repository.
+
+#### **Using GitHub Actions securely**
+
+When using GitHub Actions for CI/CD, you must follow these security principles:
+
+* **Principle of Least Privilege**: Workflows and the `GITHUB_TOKEN` should only have the minimum permissions necessary. Default to read-only and escalate permissions only for specific jobs where needed.  
+* **Secure Secret Management**: Use GitHub Environments to scope secrets to specific deployment targets (like staging or production). For cloud authentication (for example, with AWS IAM), use OpenID Connect (OIDC) to request short-lived tokens instead of using long-lived credentials.  
+* **Third-Party Actions Policy**: You must pin all third-party actions to a full commit SHA, not a mutable tag (like `v2.1.0`). Only use third-party actions that are verified and actively maintained. Enforce this through organisation settings.  
+* **Protect Workflow Files**: Use a `CODEOWNERS` file to require reviews for any changes to files in the `.github/workflows/` folder.
+
+#### **Secure merging practices**
+
+When updating your feature branch with the latest changes from `main`, you should use `git merge` instead of `git rebase`. Merging preserves your original commit history, whereas rebasing rewrites it, which can cause problems for collaborators on a shared branch.
+
+You can achieve a clean, linear history on the `main` branch by using a squash merge when completing a pull request. This combines all of your feature branch's commits into a single commit on `main`.
+
+You must **never use `git push -f`** (force push) on shared branches. If you absolutely have to rewrite history on a personal branch that has not been shared, use `git push --force-with-lease`, as it is a safer command that will not overwrite others' work.
+
+## Repository documentation and management
+
+Clear documentation is essential for any project.
+
+#### **README files**
+
+Every repository must have a `README` file. It is the main entry point for anyone interacting with your project. The `README` should help users understand what the project does, how to use it, and how to contribute.
+
+* **Language**: Write in plain English. Assume the reader has no prior knowledge of the project.  
+* **Structure**: For GDS / CO projects, READMEs should follow the alphagov template for consistency.  
+* **Testing**: You must test all instructions in the `README` before publishing to ensure they are accurate.
+
+#### **Licensing**
+
+All public repositories must include a `LICENCE` file (or `LICENCE.md`).
+
+* **Code**: Use the MIT License.  
+* **Documentation**: Use the Open Government Licence (OGL).  
+* **Copyright**: The copyright is Crown Copyright. Include the notice: `Copyright (c) YEAR Crown Copyright (Government Digital Service)`.
+
+#### **General repository settings**
+
+* **Backups**: Consider backing up repositories to an alternative location, such as AWS CodeCommit.  
+* **Archiving**: If an application is no longer in production, you should archive its repository. You must update the `README` to explain why and link to any new application that replaces it.  
+* **Access**: Regularly review collaborator and team access permissions, following the principle of least privilege.  
+* Code: Use the MIT License.  
+* Documentation: Use the Open Government Licence (OGL).  
+* Copyright: The copyright is Crown Copyright. Include the notice: *Copyright (c) YEAR Crown Copyright (Government Digital Service)*.
+
+### General repository settings
+
+* Backups: Consider backing up repositories to an alternative location, such as AWS CodeCommit.  
+* Archiving: If an application is no longer in production, you should archive its repository. You must update the *README* to explain why and link to any new application that replaces it.  
+* Access: Regularly review collaborator and team access permissions, following the principle of least privilege.
