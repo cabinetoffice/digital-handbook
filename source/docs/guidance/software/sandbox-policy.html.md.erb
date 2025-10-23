@@ -1,0 +1,97 @@
+---
+title: Sandbox Policy
+last_reviewed_on: 2025-10-23
+review_in: 12 months
+---
+# <%= current_page.data.title %>
+
+## **1.0 Purpose**
+
+This policy governs the use of cloud sandbox environments. It ensures that innovation and experimentation can happen safely, securely, and cost-effectively. It provides a clear process for managing sandboxes from creation to deletion, and for moving successful experiments towards production.
+
+This applies to both AWS and Azure accounts.
+
+## **2.0 Scope**
+
+This policy applies to all technical staff using or managing cloud sandbox environments on AWS, Azure and other hosting environments. This includes developers, engineers, data scientists, and architects. It also applies to anyone responsible for approving or reviewing sandbox activity, including the Head of Engineering and the Technical Design Authority (TDA).
+
+This policy covers all cloud environments designated as a 'sandbox'. A sandbox is a temporary, isolated environment for prototyping, training, or experimentation. It is not intended for hosting live services.
+
+## **3.0 Key Policies**
+
+### **3.1 Data Usage**
+
+You must not use live, production-level, sensitive data or personally identifiable information (PII) in any sandbox environment.
+
+**Production data** is any information used to deliver or support a live government service. This includes data from production databases, user-uploaded files, and configuration secrets.
+
+**Personally identifiable information (PII)** is any data that can be used to identify a specific individual.
+
+You must use synthetic or anonymised data for testing and development in a sandbox. 
+
+### **3.2 System Integration**
+
+You must not connect a sandbox to any live production system, service, or network.
+
+All sandbox environments must be completely isolated. This prevents experimental code from affecting the stability and security of live services. It also protects production systems from potential vulnerabilities in test environments.
+
+## **4.0 Governance Process**
+
+### **4.1 Requesting a Sandbox**
+
+To get a sandbox, you must submit a request to the Head of Engineering for approval.
+
+Your request must include:
+
+* The purpose and objectives of the experiment  
+* A list of the cloud services you plan to use  
+* A justification for the experiment  
+* Estimated sandbox duration
+
+### **4.2 Budget and Timeline**
+
+Your request must define a maximum budget (spend cap) and a fixed timeline (expiry date) for the sandbox.
+
+The platform team will monitor spending against your approved budget. The sandbox and all its resources will be decommissioned on the agreed expiry date. You must request a formal extension from the Head of Engineering if you need more time.
+
+### **4.3 Path to Production (TDA Approval)**
+
+You must get formal approval from the Technical Design Authority (TDA) before a project developed in a sandbox can move into production-level development.
+
+To get approval, you must present the outcomes of your experiment to the TDA. The TDA review will assess your project's:
+
+* Proposed architecture and design  
+* Security considerations and risk assessment  
+* Full cost analysis for production, including running and support costs  
+* Alignment with departmental technology strategy
+
+## **5.0 Roles and Responsibilities**
+
+**You (the sandbox user)** are responsible for:
+
+* Following this policy at all times  
+* Managing your work within the approved budget and timeline  
+* Reporting any security incidents or data breaches immediately  
+* Deleting your sandbox environment when your work is complete
+
+The **Head of Engineering** is responsible for:
+
+* Reviewing and approving all sandbox requests, including budgets and timelines  
+* Authorising any extensions to a sandbox's timeline or budget
+
+The **Technical Design Authority (TDA)** is responsible for:
+
+* Reviewing projects that originate in a sandbox  
+* Approving a project's technical readiness to move into production development
+
+The **Platform Team** is responsible for:
+
+* Creating sandboxes once they are approved  
+* Monitoring sandbox costs and security compliance  
+* Decommissioning sandboxes on their expiry date
+
+## **6.0 Policy Violations**
+
+Failure to comply with this policy will result in the immediate suspension or deletion of your sandbox environment.
+
+Serious or repeated breaches may lead to disciplinary action, in line with organisational HR policy.
