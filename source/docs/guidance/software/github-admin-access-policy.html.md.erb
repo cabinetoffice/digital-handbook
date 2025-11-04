@@ -1,0 +1,117 @@
+---
+title: Github Administration Access Policy
+last_reviewed_on: 2025-11-04
+review_in: 6 months
+---
+
+# GitHub Administration Access Policy
+
+A repository administrator is responsible for the health, security, access control, quality, and operational continuity of a repository. They combine technical Git and GitHub skills, process ownership (such as CI/CD, releases, and branch policies), and community or project coordination.
+
+If you are a repository administrator, you must have the necessary technical skills. A lack of these skills creates risks, from immediate security exposures to long-term operational and reputational damage.
+
+Having too many administrators increases the risk of accidental or malicious changes, misconfigurations, and secret exposure. It also:
+
+* Complicates credential management  
+* Makes audit trails and accountability unclear  
+* Leads to inconsistent enforcement of policies and branch protections  
+* Increases supply-chain risk from unreviewed workflow or dependency changes  
+* Hinders incident response and compliance
+
+You must limit admin privileges to a small, vetted group. Use team-based roles, require time-bound elevations, use multi-party approvals, and carry out continuous monitoring.
+
+## **Your responsibilities**
+
+If you are a GitHub administrator, you are responsible for the following for your repositories:
+
+### **Access and permission management**
+
+* Grant and revoke collaborator access and team permissions.  
+* Maintain [least-privilege access](https://guidance.cabinetoffice.gov.uk/digital-handbook/docs/guidance/software/principle-least-privilege.html) and limit the number of full admin rights. We recommend 2 to 3 repo admins, or an automation GitHub App for the role.
+
+### **Repository configuration and lifecycle**
+
+* Set the default branch, repository visibility (public or private), topics, and descriptions.  
+* Create, update, and enforce branch protection rules. This includes required reviews, status checks, required linear history, signed commits, and restricting who can push.  
+* Archive, transfer, or delete repositories when appropriate.
+
+### **CI/CD, workflows, and automation**
+
+* Configure GitHub Actions or workflows, secrets, and runners.  
+* Maintain integration with CI/CD pipelines and deployment systems.  
+* Manage deploy keys and service accounts used by CI/CD tools.
+
+### **Code review and quality control**
+
+* Enforce code-review rules (such as required reviewers and CODEOWNERS).  
+* Maintain `contributing.md`, pull request templates, and issue templates.  
+* Ensure test coverage checks and automated linting run on pull requests (PRs).
+
+### **Release and version management**
+
+* Create and manage releases (including tags and changelogs).  
+* Coordinate release workflows and release notes.
+
+### **Security and compliance**
+
+* Monitor and respond to security alerts, such as from Dependabot, secret scanning, and vulnerability alerts.  
+* Manage the security policy (`SECURITY.md`), maintain contact info for maintainers, and respond to vulnerability reports.  
+* Manage repository secrets (for example, for Actions and Codespaces) and rotate credentials when needed.
+
+### **Incident response**
+
+* Lead or coordinate responses to security incidents, accidental secrets exposure, or production regressions caused by repository changes.
+
+## **Requirements**
+
+The GitHub administrator role is a technical one, usually filled by a technical lead or technical architect. You must work closely with the repositories you are responsible for.
+
+To be a GitHub administrator, you must meet these technical skill requirements:
+
+### **Technical skills**
+
+* Strong Git skills (branching, rebasing, merging, resolving conflicts)  
+* Familiarity with GitHub (PRs, issue templates, branch protection, Actions)  
+* CI/CD and release automation knowledge (GitHub Actions or other CI)  
+* Security basics: secret management, dependency scanning, CVE triage  
+* Scripting or automation (shell, Python, or GitHub API usage)  
+* Understanding of the codebase and runtime or deployment environment
+
+## 
+
+## **Use the repository 'maintainer' role instead**
+
+GitHub also has the 'maintain' role. This is a default role you can select for an individual or a team.
+
+For most day-to-day work, this role gives enough access to cover tasks like managing issues, PRs, branches, and workflows. It does not give permission to delete, transfer, change visibility, or manage sensitive repository settings.
+
+## **Use the team maintainer role instead**
+
+If a project or delivery manager needs to manage GitHub repository access for contractors, use the team maintainer role to administer access through teams. This centralises control, simplifies audits, and reduces the number of direct permissions granted to individuals.
+
+### **Team naming and structure**
+
+* Name teams after the project. A team may cover several repositories within that project.  
+* Use one team per access right. All team members, including the maintainer, inherit the rights granted to that team across its repositories.  
+* If a member belongs to multiple teams, their effective permissions are the total of those rights. The highest privilege granted by any team applies.
+
+### **Standard parent teams for a project or repository**
+
+You should maintain a clear separation of team access with these standard parent teams:
+
+* `[project-name]-read` (read-only access)  
+* `[project-name]-write` (read/write access)
+
+Create sub-teams under the parent teams to grant more specific access as required (for example, to contractors, vendor groups, or specific repository sets). This retains centralised control at the parent level.
+
+### **Team maintainer and sub-teams**
+
+Assign managers who need to administer team memberships as the 'maintainer' of the relevant teams. Maintainers inherit the team’s access rights and can add or remove members. Maintainers must exercise least privilege and review access regularly.
+
+## **Use time-bound admin access**
+
+To reduce risk, administrative access must only be granted on a time-limited basis. Requesters must provide a clear justification, a specific scope of access, and a defined expiry date. Approvals must come from a designated owner (for example, a team lead or security approver).
+
+You must implement administrator access using time-bound mechanisms where possible. This includes ephemeral credentials, short-lived Personal Access Tokens (PATs), or automated role expirations. This will limit exposure to the risks stated in this policy.
+
+Access must be automatically revoked at expiry. It can be manually revoked earlier if it is unused or misused. This must be followed by a brief post-access review to confirm changes and rotate any credentials that were used. Any extension requires a new justification and re-approval.
