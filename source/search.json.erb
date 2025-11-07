@@ -1,0 +1,26 @@
+<% content_type = 'application/json' %>
+[
+<%
+pages = sitemap.resources.select do |r|
+  r.ext == '.html' &&
+  r.data.title &&
+  r.data.fetch(:search, true) &&
+  !r.url.start_with?('/assets')
+end
+
+pages.each_with_index do |r, i|
+  html = (r.render(layout: false) rescue '')
+  text = html
+           .gsub(/<script[\s\S]*?<\/script>/, ' ')
+           .gsub(/<style[\s\S]*?<\/style>/, ' ')
+           .gsub(/<[^>]+>/, ' ')
+           .gsub(/\s+/, ' ')
+           .strip
+%>
+  {
+    "title": "<%= r.data.title.to_s.gsub('"','\"') %>",
+    "url": "<%= r.url %>",
+    "content": "<%= text.gsub('"','\"') %>"
+  }<%= ',' unless i == pages.size - 1 %>
+<% end %>
+]
