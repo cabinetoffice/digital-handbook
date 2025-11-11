@@ -1,26 +1,40 @@
 ---
-title: All Technology and Digital
+title: Cloud infrastructure and platform strategy
 last_reviewed_on: 2024-11-04
 review_in: 6 months
 ---
 
 # <%= current_page.data.title %>
 
-# Cloud Infrastructure and Platform Strategy
 
-The Cabinet Office Cloud Infrastructure and Platform Strategy defines the Cabinet Office strategy and reasons for choosing hosting providers for digital services and platforms.
+This strategy explains how the Cabinet Office chooses hosting providers for its digital services and platforms.
 
-You can use Cloud Infrastructure and Platform Strategy to choose a hosting platform if you intend to build or renew a digital service or platform, either in-house or outsourced. For existing services, there are some guidelines at 4.3 if you are considering a cloud migration. However, details of cloud migration are not in scope for this document.
+### **Who this strategy is for**
 
-The Cabinet Office uses multiple clouds vendors. The decision to adopt a particular cloud for the use case depends on the type of workloads, costs, commercial agreement, sustainability and departmental capabilities.
+You must use this strategy to choose a hosting platform when you build or renew a digital service, whether it is built in-house or outsourced.
+
+It also provides guidelines if you are considering migrating an existing service to the cloud. This document does not cover the detailed process of cloud migration.
+
+### **How to choose a provider**
+
+The Cabinet Office uses multiple cloud vendors.
+
+To decide which cloud provider to use, you must consider:
+
+* workloads  
+* costs  
+* commercial agreements  
+* sustainability  
+* departmental capabilities
 
 
-# 1. Amazon Web Service (AWS)
+
+## Amazon Web Service (AWS)
 
 Amazon Web Service (AWS) is the Cabinet Office strategic hosting platform. You must consider using AWS first to host your digital services and platforms at the OFFICIAL classification (including the SENSITIVE handling caveat, marked OFFICIAL-SENSITIVE).
 
 
-## Why
+### Why
 
 Cabinet Office (CO) Digital has invested significant effort in optimising and assuring the AWS infrastructure. This includes:
 
@@ -48,7 +62,7 @@ The AWS Enterprise contract with [AWS includes](https://assets.applytosupply.dig
 AWS is considered the market leader for[ cloud infrastructure and platform services in the Gartner 2023 magic quadrant](https://aws.amazon.com/blogs/aws/read-the-2023-gartner-magic-quadrant-for-strategic-cloud-platform-services/) in terms of ability to execute and completeness of vision (see Appendix). This is important as the Cabinet Office’s invested strategic platform and supplier needs to be stable, scalable and future-proofed for the foreseeable future.
 
 
-## How
+### How
 
 
 
@@ -60,10 +74,9 @@ AWS is considered the market leader for[ cloud infrastructure and platform servi
 You must consider the reuse of Government and CO Digital common platforms and components rather than building your own whenever appropriate; and incorporate them into your end-to-end architecture. This includes, GOV.UK Notify, GOV.UK Pay, COLA ([Cabinet Office Login App](https://docs.google.com/document/d/1CZlQfy9zQO9AFlTQXJ82Z6gXjA2jMzLshaCw_EGaOuA/edit?usp=sharing)).
 
 
-## Cloud Computing and Architectural Design
+### Cloud computing and architectural design
 
 You may use any AWS services to design your architecture according to your service’s needs. You should consider the use of AWS compute resources, and consider them regarding their technical suitability, ease of maintenance and cost effectiveness:-
-
 
 
 1. Serverless (Lambda)
@@ -78,7 +91,6 @@ The architecture should be easily scalable; hence, we recommend using serverless
 You should:
 
 
-
 * have technical and security assurance on your architectural design
 * optimise your design with resilience, scalability, security and cost reduction in mind
 * Forecast your costs and continuously revise your architecture to optimise your spend on infrastructure. For example, turn off development environments out of hours; use reserved instances.
@@ -86,7 +98,7 @@ You should:
 * Adhere to the [cloud cost optimisation standards](https://docs.google.com/presentation/u/0/d/1NHc0TKpXAg-46TW4pHLYhlojCFE9lRkLi5-7qMvZYpU/edit)
 
 
-# 2. Azure
+## Azure
 
 Azure can be considered a good solution for some use cases for services at the OFFICIAL classification (including the SENSITIVE handling caveat, marked OFFICIAL-SENSITIVE), for example, developing a service to automate in Microsoft/ Azure ecosystems, when Active Directory or Sharepoint are part of the architectural design.
 
@@ -98,20 +110,20 @@ You should always consider using AWS first to see if it meets your needs to help
 * if you have an existing system that is already on Azure (See Section 6 on guideline for migration)
 
 
-## Why
+### Why
 
 We would like to introduce a second strategic public cloud provider to reduce the Cabinet Office reliance on a single vendor. Moreover, CO Digital acknowledges the need to use Azure for automation around the Microsoft ecosystem.
 
 
-## How
+### How
 
 If you would like to use Azure to build a new service, you should contact [CO Enterprise Architecture](https://groups.google.com/a/cabinetoffice.gov.uk/g/co-eaa) for inquiry.  The TDA will evaluate your use case and approve or disapprove the use.
 
 
-# 3. Other platforms and considerations
+# Other platforms and considerations
 
 
-## 3.1 Google Cloud (GCP)
+## Google Cloud (GCP)
 
 You should <span style="text-decoration:underline;">NOT</span> build a digital service in GCP.  However, the use GCP is permitted ONLY under these conditions:
 
@@ -124,7 +136,7 @@ You should <span style="text-decoration:underline;">NOT</span> build a digital s
 * with approval of the the Cabinet Office Technical Design Authority
 
 
-## 3.2 Salesforce
+## Salesforce
 
 Salesforce should <span style="text-decoration:underline;">NOT</span> be used as a platform for hosting a high-code digital service, unless you have approval from the Cabinet Office Technical Design Authority.
 
@@ -142,7 +154,7 @@ This is because:
 * Salesforce licensing model is not a good fit for citizen-facing applications
 
 
-## 3.3 Infrastructure migration
+## Infrastructure migration
 
 We understand that there are some existing services that are hosted on-prem, in virtual or private clouds that do not currently align with the Cabinet Office strategic platforms.
 
@@ -162,12 +174,12 @@ We will need investment for cloud migration; a business and impact analysis shou
 Please contact our [legacy IT team](https://groups.google.com/a/digital.cabinet-office.gov.uk/g/co-legacy-it) to arrange an assessment and co-develop a mitigation plan.
 
 
-## 3.4 Secret and top secret classifications
+## Secret and top secret classifications
 
 For services that are above OFFICIAL-SENSITIVE protective marking, a tailored infrastructure and platform solution will be required and are beyond the scope of this strategy.
 
 
-## 3.5 Heroku and Netlify
+## Heroku and Netlify
 
 You may prototype in the Heroku and Netlify platforms, especially in the Alpha stage of a development.
 
