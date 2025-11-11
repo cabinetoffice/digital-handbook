@@ -1,11 +1,7 @@
 require 'govuk_tech_docs'
 
-GovukTechDocs.configure(self)
+environment = ENV.fetch('APP_ENV', 'local')
+
+GovukTechDocs.configure(self, livereload: environment == 'docker' ? { js_host: 'localhost' } : {})
 
 set :layout, 'custom'
-set :css_dir, 'stylesheets'
-set :images_dir, "images"
-
-configure :build do
-  activate :relative_assets
-end
