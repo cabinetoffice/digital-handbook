@@ -1,0 +1,87 @@
+# AWS Cloud Shared Responsibility Model
+
+Cabinet Office Digital Cloud provides these added-values activities and services, in addition to the [standard services](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/amazon-web-services-cloud-platform.html) offered by AWS. 
+
+* Operation and support of the organisational management account, enterprise subscription and support, and security control policies  
+* Centralised contract, billing and recharge management  
+* Creating and managing approval for the AWS and platform operation business case.   
+* Predefined and enhanced organisational security control settings  
+* User management for employee and suppliers  
+* Account provisioning and management  
+* Organisational Cost & Usage Report (CUR), Cost Intelligence and KPI dashboards   
+* Organisation level audit logs ingested into our Security Operation Centre (SOC), which has 24/7 protective monitoring from the Cyber operations team  
+* Advise on FinOps, security and compliance report of the services running on AWS
+
+## Shared Responsibility Model
+
+The management of a workload or service running on Cabinet Office AWS Cloud is a shared responsibility between 
+
+* **The service team (Tenant)**: The service team owns the AWS accounts and is accountable for the lifecycle of workloads hosted on AWS Cloud, whether delivered in-house or via outsourcing. They are responsible for incident response, security, day-to-day operations and vulnerability management of the services. 
+
+* **CO:D platform engineering (COPE) team:** The COPE team in Cabinet Office Digital owns the Cabinet Office AWS organisation and management accounts; responsible for all activities related to the organisational platform, customisation of the AWS organisation and automation required to maintain a central platform. This includes the billing dashboard, integration with cyber security, account and user management, and platform optimisation. The COPE team also manages the AWS business case and contractual arrangements. 
+
+* **CO:D finance team**: The finance team is responsible for paying AWS invoices, monitoring spend against budgets, and recharging AWS consumption back to the relevant business units. Access to AWS billing portal is provided 
+
+* **CO:D cyber security**: Provides proactive organisation-wide security monitoring and cyber incident response; defines the Security Control Policies; owns and operates the Splunk cyber monitoring tool, and leads platform security improvement work. 
+
+* **AWS (Supplier)**: Delivers the underlying AWS infrastructure and services to the general market; responsible for cloud security, availability and compliance of AWS platform components, and for coordinating security incidents affecting the cloud environment. 
+
+Our shared responsibility model is an extension to the [AWS Shared Responsibility Model](https://aws.amazon.com/compliance/shared-responsibility-model/). The following table defines the Cabinet Office responsibilities as a “customer” and the responsibilities divided into the Service, platform and cyber security team.  
+
+| | Service team (Tenant) & their suppliers | Platform engineering | Cyber Security |
+| :--- | :---: | :---: | :---: |
+| **Digital Service (hosted on AWS)** | | | |
+| Application development lifecycle | ✅ | | |
+| Application operations and support <sup>(2)</sup> | ✅ | | |
+| AWS accounts and role-based access control | ✅ | | |
+| Infrastructure of the digital service | ✅ | | |
+| Security and vulnerability management | ✅ | | |
+| Service and account level Finops | ✅ | | |
+| **AWS Organisation** | | | |
+| AWS Account provisioning and lifecycle management | | ✅ | |
+| AWS organisation management | | ✅ | |
+| Organisation billing dashboard | | ✅ | |
+| AWS user provisioning and lifecycle management | | ✅ | |
+| Organisationation-wide FinOps | | ✅ | |
+| **Incident response and support** | | | |
+| Service stakeholder coordination and communication | ✅ | | |
+| Cyber security related incident | ✅ | | ✅ |
+| Non-cyber related incident (e.g. bugs) | ✅ | | |
+| Emergency access to the AWS accounts <sup>(1)</sup> | | ✅ | ✅ |
+
+ (1) *In an emergency situation such as a major cyber security incident, the Platform Engineering (COPE) Team may invoke temporary emergency access to the AWS accounts owned by the service teams to safeguard Cabinet Office assets. This should not be treated as routine operation, as it introduces security risk and must be governed by established approvals and audit trails.* 
+
+(2) *It is essential that the service team maintains continuous technical capability to support both the applications and the infrastructure of the services they own, irrespective of whether provision is in‑house or via outsourced providers. AWS administrators must comply with the [AWS Administration Policy](https://guidance.cabinetoffice.gov.uk/digital-handbook/docs/guidance/software/aws-administration-min-requirements.html), and [incident response](https://docs.google.com/document/d/1Kb6-It-LMbj7UiO9bl2QCC5sCm0TW_3-dYfS10ov2ow/edit?tab=t.0#heading=h.p99426yo0rbv) management should be followed and tested.*
+
+## AWS Supplier Enterprise Support
+
+The Cabinet Office has an AWS Enterprise Support contract. See the [AWS Enterprise Support plan](https://aws.amazon.com/premiumsupport/plans/) for the SLA and included services. Accounts created under the Cabinet Office organisation or the Cabinet Digital Enterprise Service organisation are eligible for Enterprise support.
+
+## AWS Hosting Recharge Policies
+
+All AWS hosting costs are recharged to the service team. When requesting an AWS account, the service team must provide the organisation’s cost code and the contact details for the finance representative and the technical lead. 
+
+Recharge model:
+
+* 100% of the AWS account cost is recharged to the service team.
+
+* A 5% service fee is added to the AWS account cost.
+
+* Platform infrastructure and enterprise support costs are shared pro rata among all Cabinet Office.
+
+## Requesting an AWS accounts
+
+You may request a new AWS account either to build a new service or to implement architectural changes to an existing service, such as separating environments across AWS, in line with the [guidance](https://guidance.cabinetoffice.gov.uk/digital-handbook/docs/standards/software-development-operations.html#5-use-separate-development-staging-and-production-environments).
+
+Before starting development of a new service, you must obtain approval to build from the Cabinet Office [Technical Design Authority](https://intranet.cabinetoffice.gov.uk/it-data-and-security/chief-technology-office/technical-governance-and-assurance/technical-design-authority/).
+
+Requesting an AWS account via [this application](https://request-an-aws-account.platforms.cabinetoffice.gov.uk/) requires the following information:
+
+* Your team details: team name, shared email address, and the team lead’s contact details.  
+* Service details and whether out-of-hours support is required.  
+* Finance approval and cost code for recharge.  
+* Account administrators (comply with the [AWS Administrator Policy](https://guidance.cabinetoffice.gov.uk/digital-handbook/docs/guidance/software/aws-administration-min-requirements.html)).  
+
+Your team is responsible for ensuring you have the skills and capabilities to maintain, operate and decommission any services you create, and for complying with all relevant Cabinet Office security policies, technical policies and standards. 
+
+You must also have secure plans for credential and user management, including prompt removal of access for leavers either before their last day with the organisation or immediately after.
