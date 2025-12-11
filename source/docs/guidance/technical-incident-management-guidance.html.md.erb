@@ -1,0 +1,142 @@
+# Technical incident management guidance
+
+## 
+
+## 1\. Purpose
+
+This guidance applies to digital platforms and services within Cabinet Office Digital.
+
+It explains how to manage technical incidents. The goal is to restore normal service quickly with minimal impact on users and the department.
+
+Technical incidents may also be cyber security or data loss incidents.
+
+This guidance is for general technical incidents. You must still follow the separate, formal processes for:
+
+* **Cyber Security Incidents:** Report immediately to the [Cabinet Office Cyber Security Team](https://intranet.cabinetoffice.gov.uk/it-data-and-security/cyber-and-information-security-services/#:~:text=How%20do%20I%20report%20a%20cyber%20security%20incident)  
+* **Data Breaches:** Report immediately to the [Cabinet Office Data Privacy & Compliance Team](https://docs.google.com/forms/d/e/1FAIpQLSclsR0TLuhIqbgxR0vFayMo4q4BKa_1ob_oVeYSRvPytQU6xw/viewform)
+
+You must include these reporting requirements in your local service manual, guides, and processes.
+
+## 2\. How to determine incident priority
+
+You must classify all incidents using two factors: **impact** and **urgency**. This ensures a consistent response.
+
+### **2.1. Define impact**
+
+Impact is the effect of the incident on the department. When you assess impact, consider:
+
+* **Scope:** How many staff are affected?  
+* **Business Function:** What business function is blocked?  
+* **Seniority:** Are SCS, Ministers, or their Private Offices affected?  
+* **Data:** Is sensitive business data inaccessible, incorrect, or at risk?
+
+### **2.2. Define urgency**
+
+Urgency is how quickly the incident needs to be resolved. When you assess urgency, consider:
+
+* **Time-Sensitivity:** Is there an imminent, immovable deadline?  
+* **Workaround:** Is there an easy, temporary workaround for staff?  
+* **Rate of Degradation:** Is the problem getting worse?
+
+**2.3. The priority matrix**
+
+Use the impact and urgency matrix to set a priority level (P1 to P6). This makes classification consistent.
+
+**Example service impact matrix**
+
+|  | High Urgency | Medium Urgency | Low Urgency |
+| :---- | :---- | :---- | :---- |
+| **High Impact** | P1 | P1 | P2 |
+| **Medium Impact** | P2 | P3 | P4 |
+| **Low Impact** | P3 | P4 | P5 |
+
+## 
+
+## 
+
+## 
+
+## 
+
+## 
+
+## 
+
+## 
+
+## 
+
+## **3\. Incident priority levels**
+
+This table defines the priority levels (P1 to P6) for internal services.
+
+| Priority Level | Definition (Internal Context) | Expected Response | Expected Resolution Target |
+| :---- | :---- | :---- | :---- |
+| **P1 (Critical)** | Critical business service outage (for example, all-staff network, email, or SSO is down). Ongoing unauthorised access (Cyber incident). | 20 minutes | Within 1 hour |
+| **P2 (Major)** | Substantial degradation of a critical service (for example, email is unusable for everyone). Complete outage of a non-critical but important business service. | Within 1 hour | 4-8 hours |
+| **P3 (Significant)** | Intermittent issues with a key service. Full outage for a small group of users or a single senior staff member (SCS+). | Within 2 hours | 1-2 business days |
+| **P4 (Minor)** | Component failure with no immediate staff impact (for example, loss of a redundant server). A single user issue where a workaround exists. | Within 4 hours | 3-5 business days |
+| **P5 (Monitor)** | Issue requiring no further action beyond monitoring. A cosmetic or low-impact bug is reported. | Within 1 business day | Log in backlog |
+| **P6 (Informational)** | Request for information only (for example, "How do I connect to the printer?"). | Within 2 business days | Log in backlog |
+
+## **4\. Support structure**
+
+Service teams must define the roles and responsibilities (RACI) for incident management.
+
+When defining these roles, you must explicitly resource a Service Delivery or Operations function. This function is responsible for the day-to-day running of the application and is distinct from the teams managing the underlying infrastructure or the product backlog.
+
+### **Standard lines of support**
+
+Cabinet Office incident management typically operates across 3 lines of support.
+
+* **1st line (user support):** [Digital One Stop Shop](https://digital-one-stop-shop.cabinetoffice.gov.uk/support/catalog/items/160). This is the single point of contact for staff. They resolve basic issues and route other tickets to the correct 2nd line team.  
+* **2nd line (technical support):** Live Services / Service Teams. They receive escalations from 1st line and automated alerts. They triage incidents using the matrix and are responsible for resolving P1 and P2 incidents.  
+* **3rd line (product support):** The specialist 3rd line teams. They receive complex P3 and P4 incidents from 2nd line that need developer work. These incidents are managed as part of the team's backlog.
+
+## 
+
+## **5\. Incident management process**
+
+### **5.1. P1 and P2 incident process (high priority)**
+
+The Service Delivery (2nd line) team owns P1 and P2 incidents. A formal incident team manages them to ensure immediate resolution.
+
+### **5.2. P3 and P4 incident process (low priority)**
+
+2nd line support triages P3 and P4 incidents and assigns them to the 3rd line product team. The product team manages them as backlog items.
+
+## **6\. P1 and P2 incident roles and activities**
+
+### **6.1. Roles in the P1 and P2 incident team**
+
+One person may perform multiple roles.
+
+* **Incident lead (technical lead):** Manages the incident and coordinates the team. They analyse the incident, organise technical support, escalate to senior management if needed, and organise the post incident review. This is typically a Service Delivery role.  
+* **Comms lead:** Coordinates with the incident lead to keep stakeholders informed. They update status pages and send communications.  
+* **Technical support (service team):** Performs detailed analysis, diagnosis, and resolution. They engage 3rd line specialists if needed.  
+* **Documenter:** Records all actions, decisions, and communications in the incident report with a clear timeline.  
+  
+
+
+### **6.2. P1 and P2 incident activities**
+
+**1\. Create incident report and ticket** An incident is logged by a 2nd line team member (from an alert) or escalated from 1st line. They must create an Incident Report and log a [ticket in OneStop Shop](https://digital-one-stop-shop.cabinetoffice.gov.uk/support/catalog/items/160). The [Incident report template can be found here](https://docs.google.com/document/d/1Kb6-It-LMbj7UiO9bl2QCC5sCm0TW_3-dYfS10ov2ow/edit?tab=t.0#heading=h.p99426yo0rbv)
+
+**2\. Prioritise the incident** Service Delivery must use the impact and urgency matrix (see section 2\) to assign a priority (P1 to P4).
+
+**3\. Notify the incident lead** Service Delivery notifies the on-call incident lead for the affected service. On smaller teams, the Service Delivery engineer may act as the incident lead.
+
+**4\. Assemble the incident team** The incident lead assembles the team (comms, technical support, documenter).
+
+**5\. Investigate the incident** The incident lead performs the initial analysis. Technical support carries out a detailed investigation to find the cause, workarounds, and resolution options.
+
+**6\. Document all actions** The documenter must keep a time-stamped log of all actions, discussions, and decisions in the incident report. This is essential for the post-incident review.
+
+**7\. Communicate updates** The comms lead must provide regular updates as defined in the priority table (see section 3). You must:
+
+* send all-staff communications via email (if the incident affects the whole department)  
+* notify specific stakeholders
+
+**8\. Resolve the incident** The incident is resolved when the incident lead agrees the service is restored. The incident lead updates the ticket with the root cause (if known) and details of the fix.
+
+**9\. Close the incident (post incident review)** All P1 and P2 incidents must have a post incident review (PIR). You must use the review's output to complete the incident report and track actions to prevent the incident from happening again.
