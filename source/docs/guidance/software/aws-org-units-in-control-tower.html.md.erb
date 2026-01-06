@@ -1,0 +1,118 @@
+---
+title: AWS organisational units in control tower
+last_reviewed_on: 2026-01-06
+review_in: 12 months
+---
+
+# <%= current_page.data.title %>
+
+In 2025, the CO Platform Engineering (COPE) team migrated the Cabinet Office AWS accounts from the existing AWS Organisation (shared with GDS) to a newly established AWS Organisation, set up with AWS Control Tower as a landing zone to govern a multi-account environment.  
+
+## Control Tower: 
+
+An AWS Control Tower provides: 
+
+* **Fast, prescriptive setup**: Provides a ready-made Landing Zone with blueprints to create and manage multiple AWS accounts in a consistent way.  
+* **Centralised governance**: Enforces policy and security standards across all accounts via Guardrails (preventive and detective) that rely on AWS Config and, where appropriate, SCPs.  
+* **Simplified account provisioning**: The Account Factory enables rapid creation of new accounts that automatically inherit approved baselines and controls.  
+* **Centralised logging and security posture**: Configured central logging (e.g., CloudTrail, Config) and standard security baselines across the organisation.  
+* **Access management integration**: Works with AWS Organisations for governance and AWS SSO (or IAM Identity Centre) for centralised user access.  
+* **Ongoing compliance and visibility**: Provides dashboards and audit-ready evidence to support governance, risk, and compliance activities.  
+* **Standardisation across environments**: Encourages consistent controls across prod, non-prod, and other environments, regions, or business units.
+
+## Organisation Units (OUs)
+
+AWS Organisations OUs (Organisational Units) are a way to group AWS accounts within a single organisation to enable central governance and management.  Adapted from AWS Blueprints, the Cabinet Office control tower has these OUs, which have different security control policies (SCPs) applied to the accounts created or enrolled in these OUs according to the purpose of the OUs. 
+
+The OUs are: 
+
+| OU Name & Path | Description | Type |
+| :---- | :---- | :---- |
+| Root  | Top level layer of the organisation, where all accounts and Organisation Units (OUs) sit within. Anything applied here will be inherited by all OUs and accounts within the organisation. | Internal |
+| Root/Quarantine | Temporary holding zone for accounts where malicious activity has been suspected, and activity within these environments should be heavily restricted while forensic activity takes place. | External |
+| Root/Management | For Organisation wide management services, such as Request-An-AWS-Account | Internal |
+| Root/Security | For Organisation wide security services, such as CloudTrail, GuardDuty, Config services which have delegated admin permissions across the organisation. | Internal |
+| Root/Sandbox | For short lived development projects that do not contain live data and are to be segregated from live services. | Internal |
+| Root/Workloads | Primary location for storing any accounts related to CO:D services, whether they are development, test, production accounts. Has further sub organisation units, for production and non production to split policies as required. | External |
+| Root/Workloads/ Non-Production | Primary location for any AWS account supporting a CO:D service which does not process live data. A minimum baseline set of policies should be consistent across all accounts here. | External |
+| Root/Workloads/ Production | Primary location for any AWS account supporting a CO:D service which processes live data, whether it is a production, or testing account. A minimum baseline set of policies should be consistent across all accounts here. | External |
+| Root/Exception | Primary location for AWS accounts which have bespoke or specific policy requirements which do not align with other workload environments. Bespoke policies should be configured here, with additional detective monitoring in place to reflect the fact there are different policy needs. | External |
+| Root/Transition | Location where migrated accounts from the old AWS organisation will be transitioned to. Limited policies will apply here \- only those that are required to maintain the organisation, and detective monitoring services. | External |
+| Root/Specific AWS Account | Specific AWS accounts may have additional requirements, which need a policy attached. This can be attached directly to their AWS account, rather than an OU to apply to multiple accounts | External |
+
+*\* External OUs contain AWS accounts used by service teams.*    
+*\* Internal OUs are used only by CO Digital platform or cyber security teams.* 
+
+Further OU structure may be built for specific projects based on their specific requirements. 
+
+The COPE team automates the arrangement of organisational units (OUs) based on your [account requests](https://request-an-aws-account.platforms.cabinetoffice.gov.uk/) and places your account in the correct OU. In the event of a cyber or data breach, COPE will collaborate with the Cabinet Office Cyber Security team to determine whether the breached account should be moved to the Quarantined OU to protect Cabinet Office assets. 
+
+## Service Control Policy (SCP)
+
+AWS Service Control Policies (SCPs) are the permission boundaries used in AWS Organisations. They define what actions can or cannot be performed by any account within an Organisation or an organisational unit (OU).
+
+## Root SCPs 
+
+These Service Control Policies (SCPs) are applied at the Root level of the organisation and are applied to all the accounts under Root, establishing a foundational level of security and operational consistency.
+
+| Policy | Description |
+| :---- | :---- |
+| Prevent Ability To Leave Organisation | Stops AWS member accounts from leaving the organisation by themselves. |
+| Protect Account & Billing Settings | Prevents standard users editing organisation accounts and billing settings.  |
+| Protects the Cabinet Office core security monitoring services | Ensures that AWS Config, GuardDuty, CloudTrail, and Security Hub cannot be disabled or changed. These services are essential for detecting anomalous activity |
+
+## Workloads SCPs
+
+These Service Control Policies (SCPs) are applied to the Workloads organisational unit (OU) nested in the organisation root. The Workloads OU contains two sub‑units: Non‑production and Production. By attaching the SCPs to the Workloads parent OU, both the Non‑production and Production OUs inherit the same control policy set. This design enables service teams to test their implementations in non‑production using the same SCPs that govern production.
+
+Segregating the AWS accounts into separate OUs offers several benefits:
+
+* Enhanced isolation between environments and reduce the production blast radius  
+* Simplifies audit/compliance reporting while maintaining a consistent security baseline across OUs.   
+* Enhance proactive security monitoring to the production workloads
+
+| Policy/ Security monitoring | Description |
+| :---- | :---- |
+| Prevent VPC Instance From Being Made Public | Ensures that a VPC instance that is currently private cannot be made public. |
+| Require Encryption For EC2 Resources | Ensures that AWS services such as EC2 data volumes need to be encrypted. |
+| Block S3 Public Access | Prevents a user from making an S3 bucket publicly accessible as a whole. |
+| Prevent External Sharing Of Resources | Allows sharing only to specified organisations, organisation units or accounts. |
+| Protect Archived Data | Prevents users from deleting AWS S3 Glacier vaults or archives. |
+| Region Control  | Restricts AWS operations to approved regions only \- applies to regional AWS services only. • us-east-1 (Lambda & ACM only) • eu-west-1 • eu-west-2  |
+| Protect AWS KMS Keys From Deletion | Prevents users from deleting AWS KMS encryption keys. |
+| Protect AWS Backup | Prevents users from modifying or deleting AWS Backup policies and vaults.  |
+| Require Use of IMDSv2 (EC2) | Requires a more secure version of the metadata service used for EC2 IAM roles. |
+| Restrict Ability To Create Local Users IAM Access Keys | Prevents long lived credentials for being created for an AWS IAM user. |
+| Require User to have MFA to stop and terminate EC2 instance | Ensures that MFA is present to stop or terminate EC2 instance |
+| Require user authentication to Create Lambda URLs With No Authentication | Prevents users from creating Lambda HTTP URLs with no authentication required. |
+| Prevent IAM Password Policy Modification | Ensures that a securely defined IAM password policy cannot be edited. |
+
+## Quarantine SCPs
+
+These Service Control Policies (SCPs) are applied to the quarantine OU, designed to contain security controls from an Incident Response perspective that are applicable to AWS accounts within the Quarantine OU within the Cabinet Office Organisation. 
+
+| Policy/ Security monitoring | Description |
+| :---- | :---- |
+| Deny All Actions On Every Resource | Denies all actions on every resource, to restrict accounts that are marked to be in a suspended state. |
+
+To find out specific details on the SCP implementation, please use [Digital One Stop Shop](https://digital-one-stop-shop.cabinetoffice.gov.uk/support/home) and raise a ticket for the CO Platform Engineering team. 
+
+# Organisational AWS Config and audit logs shipping
+
+The Cabinet Office AWS organisation has security monitoring set up, which ships audit logs into Splunk via Cribl to be monitored by the Cabinet Office Security Operation Centre (SOC). Further information on the security monitoring service can be found on the [intranet](https://intranet.cabinetoffice.gov.uk/it-data-and-security/cyber-and-information-security-services/security-monitoring/).
+
+**Standard Logging Services**
+
+The following logging services are enabled at the Organisation level for all member accounts and cannot be disabled or altered by member accounts. Log shipping is configured centrally in the Organisation by the Cabinet Office Cyber Security team. 
+
+| AWS Service | Description |
+| :---- | :---- |
+| AWS CloudTrail | An Organisation wide CloudTrail audit trail is configured by default for all member accounts within the AWS Organisation. This covers all API activity from users, roles and AWS services within an account.  *Member accounts can set up additional logging trails in their individual accounts if required.*  |
+| AWS GuardDuty | A threat detection service that uses threat intelligence feeds and machine learning models to identify potential malicious activity in AWS environments. GuardDuty is enabled by default for all member accounts within the AWS Organisation. *Additional GuardDuty Protection Plans can be enabled on request by the Cabinet Office Cyber Security team for a member account.*  |
+| AWS Config  | A configuration management service that provides both configuration history of resources in AWS environments, and identifies deviations from security best practices. AWS Config is enabled Organisation wide, with a small subset of configuration checks enabled and periodically reviewed.  *Member accounts can set up additional AWS Config rules in their individual account if required.* |
+
+Alerts are configured by the Cabinet Office SOC team, and periodically reviewed for all standard logging services. Alerts are prioritised and actioned by the SOC team, and raised with the corresponding member account contact provided. Logs are retained within the Splunk Security Information & Event Management (SIEM) service for 12 months. 
+
+**Optional Additional Logging Services** 
+
+Member accounts within the AWS Organisation can optionally send additional logs to the Cabinet Office SOC for security monitoring, such as application level logs from services including API Gateway. This is configured within the specific AWS member account by the Cabinet Office Cyber Security team, who offer [threat modelling](https://intranet.cabinetoffice.gov.uk/it-data-and-security/cyber-and-information-security-services/threat-modelling/) exercises to understand potential threats to a service team that require additional monitoring. The contact details for the Cyber Security team can be found on the [Intranet](https://intranet.cabinetoffice.gov.uk/it-data-and-security/cyber-and-information-security-services/). 
