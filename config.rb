@@ -7,5 +7,6 @@ set :css_dir, 'stylesheets'
 set :images_dir, "images"
 
 configure :build do
+  set :http_prefix, "/digital-handbook"
   activate :relative_assets
 end
