@@ -15,7 +15,7 @@ header_links:
 footer_links:
   Accessibility: /accessibility.html
 
-enable_search: true
+enable_search: false
 
 # Tracking ID from Google Analytics (e.g. UA-XXXX-Y)
 # ga_tracking_id: UA-111409592-1
