@@ -13,9 +13,9 @@ header_links:
   GitHub: https://github.com/cabinetoffice/digital-handbook
 
 footer_links:
-  Accessibility: /accessibility.html
+  Accessibility: /digital-handbook/accessibility.html
 
-enable_search: true
+enable_search: false
 
 # Tracking ID from Google Analytics (e.g. UA-XXXX-Y)
 # ga_tracking_id: UA-111409592-1
