@@ -1,0 +1,72 @@
+---
+title: Requesting and Managing an AWS Account
+last_reviewed_on: 2024-11-04
+review_in: 6 months
+---
+
+# <%= current_page.data.title %>
+
+
+# Requesting and Managing an AWS Account
+
+To request a new Amazon Web Services (AWS) account for your service, use the [**Cabinet Office AWS Request Tool**](https://request-an-aws-account.platforms.cabinetoffice.gov.uk/).
+
+The request tool details the specific form fields required, but you must ensure you have met the strict governance and technical prerequisites outlined below before applying.
+
+##  Prerequisites and Approvals 
+
+**Approvals**
+
+* **Technical Design Authority (TDA) Approval**: Before starting development of a new service, you must ensure you have engaged with the [Cabinet Office Technical Design Authority](https://intranet.cabinetoffice.gov.uk/it-data-and-security/chief-technology-office/technical-governance-and-assurance/technical-design-authority/). You will be asked to provide evidence of this engagement.  
+* **Financial Approval**: You must have approval from your business unit and the relevant Budget Holder.  
+* **Cost Centre Code:** Have the correct Cabinet Office cost centre code ready for the recharge or invoice.
+
+The request tool does not provide cost estimates. You are responsible for forecasting your costs using AWS pricing guidance to ensure affordability. AWS provides a [pricing calculator](https://calculator.aws/#/) that may be used. 
+
+### **Information for the Request Form**
+
+To complete the request, you will need:
+
+* **Team Details:** Team name, shared email address, and team lead contact information.  
+* **Service Details:** Service name and out-of-hours support requirements.  
+* **Account Administrators:** Nominated users who comply with the AWS Administrator Policy.
+
+### 
+
+### **Team Capabilities**
+
+* **Skills & Security:** You must possess the skills to operate and decommission services securely, in compliance with all Cabinet Office technical and security policies.  
+* **Credential Management:** You must have a plan to manage credentials securely. This includes revoking access for leavers **on or before** their last day.
+
+## **The Request Process**
+
+1. Submit your request via the [AWS Request Tool](https://request-an-aws-account.platforms.cabinetoffice.gov.uk/).  
+2. Your request is sent to the **Platform Engineering team** for a manual validity check.  
+3. Once approved, the account is provisioned and handed over to you.
+
+## **Account Ownership and Responsibilities**
+
+**Important:** Once the account is provisioned, the **Service Owner** assumes full responsibility. The **Platform Engineering team** does not maintain, monitor, or manage the account.
+
+* **Self-Service User Management:** You are responsible for adding and removing users. This is a purely self-service function managed via the [User Management Tool](https://request-an-aws-user.digital.cabinet-office.gov.uk/#manage-users%20)  
+* **Security and Decommissioning:** You must manage credentials, enforce security policies, and decommission services when they are no longer needed.  
+* **Leavers Process:** You must have secure plans for user management, including removing access for leavers **before** or **immediately after** their last day.  
+* **Naming Conventions:** Account names should be descriptive and lower-case separated by dashes. It should follow the following standards:    
+  Pattern 1:
+
+          \[`service name`\]-\[`environment`\] 
+
+(e.g., `public-appointment-production or  public-appointment-integration`).
+
+Pattern 2: 
+
+\[business unit\]-\[service name\]-\[environment\]
+
+(e.g., `public-appointment-production or  public-appointment-integration`).
+
+## Technical Standards and Best Practice
+
+You are required to adhere to the Cabinet Office technical standards. Please review the following Digital Handbook guidance before configuring your environment:
+
+* [**AWS Administration Minimum Requirements**](https://guidance.cabinetoffice.gov.uk/digital-handbook/docs/guidance/software/aws-administration-min-requirements.html) \- Detailed security and setup obligations.  
+* [**Branching Strategies & Policies**](https://guidance.cabinetoffice.gov.uk/digital-handbook/docs/guidance/software/branching-strategies-policies-standards.html) \- Code management standards.
