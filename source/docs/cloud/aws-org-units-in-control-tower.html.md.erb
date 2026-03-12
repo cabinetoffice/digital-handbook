@@ -1,16 +1,19 @@
 ---
-title: AWS organisational units in control tower
+title: AWS Organisational Structure (Control Tower)
 last_reviewed_on: 2026-01-06
 review_in: 12 months
 ---
 
 # <%= current_page.data.title %>
 
+## Background: 
+
+
 In 2025, the CO Platform Engineering (COPE) team migrated the Cabinet Office AWS accounts from the existing AWS Organisation (shared with GDS) to a newly established AWS Organisation, set up with AWS Control Tower as a landing zone to govern a multi-account environment.  
 
-## Control Tower: 
+Control Tower provides a governed multi-account landing zone designed to standardise account provisioning, enforce security guardrails, and centralise logging and monitoring across the organisation.
 
-An AWS Control Tower provides: 
+## What Control Tower Provides
 
 * **Fast, prescriptive setup**: Provides a ready-made Landing Zone with blueprints to create and manage multiple AWS accounts in a consistent way.  
 * **Centralised governance**: Enforces policy and security standards across all accounts via Guardrails (preventive and detective) that rely on AWS Config and, where appropriate, SCPs.  
@@ -22,7 +25,7 @@ An AWS Control Tower provides:
 
 ## Organisation Units (OUs)
 
-AWS Organisations OUs (Organisational Units) are a way to group AWS accounts within a single organisation to enable central governance and management.  Adapted from AWS Blueprints, the Cabinet Office control tower has these OUs, which have different security control policies (SCPs) applied to the accounts created or enrolled in these OUs according to the purpose of the OUs. 
+AWS Organisations use Organisational Units (OUs) to group accounts and apply governance controls centrally. Each OU has a defined purpose and associated Service Control Policies (SCPs).
 
 The OUs are: 
 
@@ -47,9 +50,9 @@ Further OU structure may be built for specific projects based on their specific 
 
 The COPE team automates the arrangement of organisational units (OUs) based on your [account requests](https://request-an-aws-account.platforms.cabinetoffice.gov.uk/) and places your account in the correct OU. In the event of a cyber or data breach, COPE will collaborate with the Cabinet Office Cyber Security team to determine whether the breached account should be moved to the Quarantined OU to protect Cabinet Office assets. 
 
-## Service Control Policy (SCP)
+## Service Control Policy (SCPs)
 
-AWS Service Control Policies (SCPs) are the permission boundaries used in AWS Organisations. They define what actions can or cannot be performed by any account within an Organisation or an organisational unit (OU).
+SCPs are organisation level guardrails that define the maximum permissions available within an account. They do not grant permissions, they define boundaries.
 
 ## Root SCPs 
 
@@ -73,19 +76,13 @@ Segregating the AWS accounts into separate OUs offers several benefits:
 
 | Policy/ Security monitoring | Description |
 | :---- | :---- |
-| Prevent VPC Instance From Being Made Public | Ensures that a VPC instance that is currently private cannot be made public. |
-| Require Encryption For EC2 Resources | Ensures that AWS services such as EC2 data volumes need to be encrypted. |
-| Block S3 Public Access | Prevents a user from making an S3 bucket publicly accessible as a whole. |
-| Prevent External Sharing Of Resources | Allows sharing only to specified organisations, organisation units or accounts. |
-| Protect Archived Data | Prevents users from deleting AWS S3 Glacier vaults or archives. |
-| Region Control  | Restricts AWS operations to approved regions only \- applies to regional AWS services only. • us-east-1 (Lambda & ACM only) • eu-west-1 • eu-west-2  |
-| Protect AWS KMS Keys From Deletion | Prevents users from deleting AWS KMS encryption keys. |
-| Protect AWS Backup | Prevents users from modifying or deleting AWS Backup policies and vaults.  |
-| Require Use of IMDSv2 (EC2) | Requires a more secure version of the metadata service used for EC2 IAM roles. |
-| Restrict Ability To Create Local Users IAM Access Keys | Prevents long lived credentials for being created for an AWS IAM user. |
-| Require User to have MFA to stop and terminate EC2 instance | Ensures that MFA is present to stop or terminate EC2 instance |
-| Require user authentication to Create Lambda URLs With No Authentication | Prevents users from creating Lambda HTTP URLs with no authentication required. |
-| Prevent IAM Password Policy Modification | Ensures that a securely defined IAM password policy cannot be edited. |
+| Region Control | Restricts AWS operations to approved regions only. Regional services are limited to eu-west-1 and eu-west-2, with Lambda and ACM additionally permitted in us-east-1 for edge and certificate use cases. Requests to operate outside these regions will be denied. |
+| Lambda Function URL Authentication | Prevents the creation or modification of Lambda Function URLs without authentication. Function URLs must use AWS_IAM authentication and cannot be configured for unauthenticated public access. |
+| Global Accelerator Governance | Prevents the creation or modification of AWS Global Accelerator resources to ensure edge networking patterns are centrally reviewed and governed. |
+| Glacier Archive Protection  | Prevents deletion of Glacier archives and vaults to protect long-term retained data from accidental or unauthorised removal.  |
+| Root User Restriction (Member Accounts) | Restricts high-risk administrative actions when using the root user within member accounts, including IAM, Organisations, billing and support modifications. Root access is intended for emergency use only. |
+| IMDSv2 Enforcement (EC2 Metadata Security) | Requires EC2 instances and launch configurations to enforce IMDSv2 by mandating session tokens and preventing metadata endpoint weakening. This reduces the risk of credential exposure via instance metadata exploitation.  |
+| S3 Account Public Access Block Protection | Prevents modification of the account-level S3 Public Access Block configuration. This ensures the global safeguard against public bucket exposure cannot be weakened or disabled within member accounts, maintaining a consistent baseline for S3 data protection.  |
 
 ## Quarantine SCPs
 

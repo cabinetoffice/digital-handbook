@@ -1,0 +1,139 @@
+---
+title: Stage 3 Migration – Service Team Runbook
+last_reviewed_on: 2026-03-09
+review_in: 6 months
+---
+
+# <%= current_page.data.title %>
+
+## Purpose
+
+This runbook outlines the actions expected from service teams during **Stage 3 migration of AWS accounts to the hardened Workloads organisational unit (OU)** within the Cabinet Office AWS Control Tower environment.
+
+Stage 3 introduces additional **Service Control Policy (SCP)** enforcement aligned with organisational platform guardrails. These guardrails strengthen security, governance, and operational consistency across service accounts.
+
+The objective of this migration stage is to move service workloads into a governed organisational unit while minimising disruption to running services.
+
+A summary of the SCP guardrails applied within the Workloads OU is available in the Digital Handbook:
+
+[Workloads SCP Guardrails – Digital Handbook](https://digital-handbook.cabinetoffice.gov.uk/docs/cloud/aws-org-units-in-control-tower.html#workloads-scps)
+
+## Scope
+
+This runbook applies to all **service teams whose AWS accounts are being migrated from the Transition OU to the Workloads OU** as part of the AWS organisation migration programme.
+
+It applies to:
+
+* Development
+* Non-production
+* Staging
+* Production
+
+accounts being migrated during Stage 3.
+
+For most services, no architectural changes are required. Where potential issues are identified during the **pre-migration AWS Config assessment**, these will be reviewed collaboratively with service teams before migration.
+
+## Migration Process
+
+### 1. Before Migration
+
+Prior to the agreed migration window, service teams must:
+
+* Review the AWS Config pre-migration assessment provided by the Platform Engineering team
+* Review the Workloads OU SCP guardrails documented in the Digital Handbook
+* Confirm availability from the service team during the migration window
+* Ensure no major releases are scheduled during the migration window
+* Be prepared to pause CI/CD pipelines if requested
+
+No further action is required unless specific risks have been identified during the pre-migration assessment.
+
+### 2. At the Start of the Migration Window
+
+At the beginning of the agreed migration window:
+
+* Service teams will be added to a **temporary migration contact group**
+* The group will include a member of the **Platform Engineering team (COPE)** and a member of the **Cyber Security team**
+
+Service teams will be asked to:
+
+* Pause CI/CD pipelines
+* Confirm no active deployments are in progress
+* Confirm no live production incidents are ongoing
+
+Once these checks are complete, the Platform Engineering team will proceed with the **OU migration**.
+
+The OU move itself typically completes within a few minutes.
+
+### 3. Immediately After Migration (First 60 Minutes)
+
+Following the OU move, service teams should validate:
+
+* Application health
+* Deployment capability
+* Cross-account access (if applicable)
+* End-user access
+
+If everything functions as expected, no further action is required.
+
+If any of the following issues are observed:
+
+* `AccessDenied` errors
+* Failed deployments
+* Region-related errors
+* Unexpected permission issues
+
+These should be raised immediately in the migration contact group.
+
+The Platform Engineering team will assess the issue and determine the appropriate next steps.
+
+### 4. If Issues Occur
+
+If a **critical service impact** is identified during the migration window:
+
+* The Platform Engineering team may initiate a **rollback to the Transition OU**
+* Findings will be reviewed collaboratively with the service team
+* A revised migration plan will be agreed if required
+
+Service teams are **not expected to modify SCPs or implement policy changes directly**.
+
+### 5. After Migration
+
+Within 24 hours of the migration:
+
+* Confirm continued service stability
+* Resume normal deployment activity
+
+No further action is required unless contacted by the Platform Engineering team.
+
+## Roles and Responsibilities
+
+**Service Teams** are responsible for:
+
+* Reviewing the pre-migration assessment
+* Ensuring availability during the migration window
+* Pausing deployments when requested
+* Validating service health following migration
+* Reporting any issues during the migration window
+
+The **Platform Engineering Team (COPE)** is responsible for:
+
+* Coordinating the migration window
+* Performing the OU move
+* Assessing issues raised during the migration
+* Initiating rollback if required
+
+The **Cyber Security Team** is responsible for:
+
+* Supporting migration monitoring
+* Providing security oversight during the migration process
+
+## What This Migration Does Not Require
+
+Service teams are **not required to**:
+
+* Redesign their architecture
+* Refactor CI/CD pipelines
+* Remove IAM users
+* Make proactive changes unless specifically discussed during the assessment
+
+Most accounts migrate to the Workloads OU without impact.
