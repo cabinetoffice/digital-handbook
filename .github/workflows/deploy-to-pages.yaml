@@ -17,7 +17,7 @@ jobs:
   build:
     uses: ./.github/workflows/test.yaml
     with:
-      upload-artifact: false
+      upload-artifact: true
   deploy:
     needs: build
     environment:
