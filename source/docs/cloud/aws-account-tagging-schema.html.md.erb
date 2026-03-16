@@ -1,0 +1,64 @@
+---
+title: AWS accounts tagging schema
+last_reviewed_on: 2025-09-09
+review_in: 6 months
+---
+
+# <%= current_page.data.title %>
+
+This policy defines the standards for applying metadata to AWS resources across the Cabinet Office. Consistent tagging is essential for cost tracking, security auditing, and automated resource management.
+
+## Core principles
+
+* **Standardisation**: use lowercase letters and hyphens for all tag keys (for example, `team-name`).  
+* **Automation**: apply tags at the point of creation using Infrastructure as Code (Terraform or CloudFormation).  
+* **Enforcement**: compliance is monitored via AWS Tag Policies and AWS Config rules. Untagged resources may be subject to automated isolation or shutdown.
+
+## Mandatory tags
+
+The [Request an AWS account](https://request-an-aws-account.platforms.cabinetoffice.gov.uk/) application automatically applies specific metadata tags to all resources in the AWS organisation level. These tags ensure every AWS account has the meta-data associated with the organisation's operational and financial needs.
+
+You cannot currently edit or manage these organisation tags.
+
+#### **Ownership and operational**
+
+* `account-name`  
+* `description`  
+* `organisation`  
+* `team-name`  
+* `team-email-address`  
+* `team-lead-name`  
+* `team-lead-email-address`  
+* `team-lead-phone-number`  
+* `team-lead-role`  
+* `service-name`
+
+#### **Security and support**
+
+* `service-is-out-of-hours-support-provided`  
+* `security-requested-alert-priority-level`  
+* `security-critical-resources-description`  
+* `security-does-account-hold-pii`  
+* `security-does-account-hold-pci-data`
+
+#### **Billing**
+
+* `billing-cost-centre`  
+* `billing-business-unit`  
+* `billing-business-unit-subsection`
+
+## Conditional tags
+
+These tags are recommended to provide additional granularity for specific service support needs.
+
+* `out-of-hours-support-contact-name`  
+* `out-of-hours-support-phone-number`  
+* `out-of-hours-support-pagerduty-link`  
+* `out-of-hours-support-email-address`
+
+#### References
+
+* [Tagging AWS resources \- The GDS Way](https://gds-way.digital.cabinet-office.gov.uk/manuals/aws-tagging.html#why-tag)   
+* [Best Practices for Tagging AWS Resources \- Best Practices for Tagging AWS Resources](https://docs.aws.amazon.com/whitepapers/latest/tagging-best-practices/tagging-best-practices.html)   
+* [Best practices and strategies \- Tagging AWS Resources and Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html)   
+* [Tagging categories \- Tagging AWS Resources and Tag Editor](https://docs.aws.amazon.com/tag-editor/latest/userguide/tag-categories.html)
