@@ -7,7 +7,7 @@ review_in: 12 months
 # <%= current_page.data.title %>
 
 Cabinet Office Digital Cloud provides these added-values activities and services, in addition to the [standard services](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/amazon-web-services-cloud-platform.html) offered by AWS 
-# AWS Cloud Shared Responsibility Model
+
 
 Cabinet Office Digital Cloud provides these added-values activities and services, in addition to the [standard services](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/amazon-web-services-cloud-platform.html) offered by AWS. 
 
@@ -25,13 +25,13 @@ Cabinet Office Digital Cloud provides these added-values activities and services
 
 The management of a workload or service running on Cabinet Office AWS Cloud is a shared responsibility between 
 
-* **The service team (Tenant)**: The service team owns the AWS accounts and is accountable for the lifecycle of workloads hosted on AWS Cloud, whether delivered in-house or via outsourcing. They are responsible for incident response, security, day-to-day operations and vulnerability management of the services. 
+* **The Service team (Tenant)**: The service team owns the AWS accounts and is accountable for the lifecycle of workloads hosted on AWS Cloud, whether delivered in-house or via outsourcing. They are responsible for incident response, security, day-to-day operations and vulnerability management of the services. 
 
-* **CO:D platform engineering (COPE) team:** The COPE team in Cabinet Office Digital owns the Cabinet Office AWS organisation and management accounts; responsible for all activities related to the organisational platform, customisation of the AWS organisation and automation required to maintain a central platform. This includes the billing dashboard, integration with cyber security, account and user management, and platform optimisation. The COPE team also manages the AWS business case and contractual arrangements. 
+* **CO:D Platform Engineering (COPE) team:** The COPE team in Cabinet Office Digital owns the Cabinet Office AWS organisation and management accounts; responsible for all activities related to the organisational platform, customisation of the AWS organisation and automation required to maintain a central platform. This includes the billing dashboard, integration with cyber security, account and user management, and platform optimisation. The COPE team also manages the AWS business case and contractual arrangements. 
 
-* **CO:D finance team**: The finance team is responsible for paying AWS invoices, monitoring spend against budgets, and recharging AWS consumption back to the relevant business units. Access to AWS billing portal is provided 
+* **CO:D Finance team**: The finance team is responsible for paying AWS invoices, monitoring spend against budgets, and recharging AWS consumption back to the relevant business units. Access to AWS billing portal is provided 
 
-* **CO:D cyber security**: Provides proactive organisation-wide security monitoring and cyber incident response; defines the Security Control Policies; owns and operates the Splunk cyber monitoring tool, and leads platform security improvement work. 
+* **CO:D Cyber Security**: Provides proactive organisation-wide security monitoring and cyber incident response; defines the Security Control Policies; owns and operates the Splunk cyber monitoring tool, and leads platform security improvement work. 
 
 * **AWS (Supplier)**: Delivers the underlying AWS infrastructure and services to the general market; responsible for cloud security, availability and compliance of AWS platform components, and for coordinating security incidents affecting the cloud environment. 
 
@@ -66,14 +66,43 @@ Our shared responsibility model is an extension to the [AWS Shared Responsibilit
 
 The Cabinet Office has an AWS Enterprise Support contract. See the [AWS Enterprise Support plan](https://aws.amazon.com/premiumsupport/plans/) for the SLA and included services. Accounts created under the Cabinet Office organisation or the Cabinet Digital Enterprise Service organisation are eligible for Enterprise support.
 
-## AWS Hosting Recharge Policies
+## AWS hosting recharge policies (FY 2026 to 2027\)
 
-All AWS hosting costs are recharged to the service team. When requesting an AWS account, the service team must provide the organisation’s cost code and the contact details for the finance representative and the technical lead. 
+We recharge all AWS hosting costs to your service team. When you request a new AWS account, you must provide:
 
-Recharge model:
+* your organisation’s cost code  
+* contact details for your finance representative  
+* contact details for your technical lead
 
-* 100% of the AWS account cost is recharged to the service team.
+## Recharge model
 
-* A 5% service fee is added to the AWS account cost.
+The recharge includes:
 
-* Platform infrastructure and enterprise support costs are shared pro rata among all Cabinet Office.
+* 100% of your AWS account cost  
+* a 5% service fee  
+* shared platform infrastructure costs (about 2% pro rata)  
+* Enterprise support costs (about 7% pro rata)
+
+## Overall discount
+
+Your service team receives a net discount of 8% on AWS costs.
+
+This is calculated by taking the 22% OVGA2 discount and subtracting the 5% service fee, 2% infrastructure cost, and 7% Enterprise support cost.
+
+## Why we apply these charges
+
+### Cross-government discount
+
+The Cabinet Office uses the cross-government OVGA2 AWS contract to secure a 22% discount. We pass this discount directly to your account. This saving offsets the 5% service fee.
+
+### Security and compliance
+
+The service fee and shared costs fund central security controls. This includes threat monitoring from the Cabinet Office Security Operating Centre (SOC), automated compliance checks, and security guardrails. This means you do not have to build these security services yourself.
+
+### Contract management
+
+The service fee covers the administration of the AWS contract. This includes vendor relations, billing, financial reporting, and account provisioning. This removes the procurement burden from your service team.
+
+### Shared infrastructure and support
+
+Sharing costs gives you access to 24/7 AWS Enterprise Support and foundational infrastructure managed by the Platform Engineering team. This makes high-tier resources affordable for all teams.
