@@ -1,0 +1,181 @@
+---
+title: Azure Cloud Platform Guidance
+last_reviewed_on: 2026-05-14
+review_in: 12 months
+---
+
+# <%= current_page.data.title %>
+
+This guidance explains how the Cabinet Office uses Microsoft Azure to host digital services and analytics platforms. This includes services at the OFFICIAL classification and those with the OFFICIAL-SENSITIVE handling caveat.
+
+## Strategic intent
+
+The Cabinet Office uses a diversified cloud approach to avoid vendor lock-in. While we use AWS as a strategic platform, Azure is the preferred choice for:
+
+* Systems integrated with the Microsoft ecosystem, such as M365 and SharePoint  
+* Enterprise-wide analytics and business intelligence through Microsoft Fabric and Power BI  
+* Resilience and disaster recovery as a second strategic cloud provider
+
+
+## **Azure landing zone**
+
+The Cabinet Office Azure environment uses a structured, scalable foundation built with Infrastructure as Code (Terraform). This foundation is called the Azure landing zone (ALZ). All workloads inherit central governance, connectivity, and security guardrails from this foundation.
+
+### **Organisational structure**
+
+The Cabinet Office Azure tenant (codigitalcloud.onmicrosoft.com) uses management groups to apply policies and governance controls.
+
+### **Management group hierarchy**
+
+All subscriptions are placed in a hierarchy to ensure they inherit the correct policies:
+
+* Root: the top-level container for centrally managed policies and roles  
+* Landing zones: subscriptions for application workloads  
+* Corp: internal applications like learning platforms and internal APIs  
+* Online: external applications and APIs that need strict network controls  
+* Sandbox: short-lived experiments and prototypes that do not use live data  
+* Quarantine: isolated subscriptions under investigation for security concerns  
+* Decommissioned: retired workloads waiting for deletion
+
+
+### **Network topology**
+
+The platform uses a dual-region hub-and-spoke topology. This includes redundant hub virtual networks (VNets) in the UK South and UK West regions.
+
+* Hub VNets: Host the Azure firewall for packet inspection and egress filtering.  
+* Spoke VNets: each workload has its own spoke peered to the central hubs. This ensures central security rules govern all traffic.
+
+## **Regional strategy**
+
+To comply with UK data residency policies, the Cabinet Office uses specific hosting regions:
+
+* UK South (Primary): hosts all active workloads and availability zones  
+* UK West (Secondary): used for failover and additional hosting
+
+If you encounter resource limits in UK South, you can use UK West as a primary hosting option. UK South and UK West are paired regions. If UK South fails, data remains available in UK West if you use geo-redundant storage (GRS).
+
+## **How to request Azure services and support**
+
+Use the Cabinet Office Digital One-Stop Shop portal to request Azure resources, subscriptions, user management, or technical support.
+
+[Azure Service Request Form](https://digital-one-stop-shop.cabinetoffice.gov.uk/a/catalog/request-items/192)
+
+To request a new subscription, you must provide:
+
+* business unit (for example, Cabinet Office Digital)  
+* subscription name (use a clear, lowercase identifier)  
+* environment type (sandbox, dev, or production)  
+* cost codes (both parent and child cost centre codes)  
+* technical lead (the person responsible for the architecture)
+
+If the team needs more information, they will contact you through the One-Stop Shop ticket.
+
+## **Access levels and permissions**
+
+The Cabinet Office enforces the principle of least privilege to maintain security.
+
+### **Contributor access**
+
+By default, new users of sandbox and dev subscriptions receive contributor permissions. This allows you to create and manage Azure resources. It does not allow you to assign roles or manage service principals.
+
+### **Requesting owner access**
+
+Granting owner access is a deviation from standard security policy. If you need owner permissions, you must submit a request through the One-Stop Shop. You must include:
+
+* the specific individuals who need access  
+* a technical justification explaining why contributor access is not enough  
+* the duration for which you need elevated access
+
+The platform engineering and cyber security teams will need to review all requests for owner access.
+
+## **Regional access and governance**
+
+You must get formal approval to use Azure regions outside of UK South and UK West. Hosting data outside the UK introduces risks to data sovereignty and legal compliance under UK GDPR.
+
+### **Process for regional deviation**
+
+To request a new region, you must complete these actions:
+
+1. Data protection impact assessment (DPIA): most workloads involve Official-Sensitive data, making a DPIA a legal requirement. Complete the form on the DPIA intranet page.  
+2. Information assurance (IA): The IA team will review the risks of hosting data in non-UK regions. More information about this process can be found on the Cabinet Office Intranet.  
+3. Technical design authority (TDA): You can email the TDA with a project description. The TDA must approve any design that deviates from approved hosting locations. More information about this process can be found on the Cabinet Office Intranet.
+
+Provide evidence of any prior technical or financial approvals to streamline the review. You must state if the data belongs to the Cabinet Office or a third party. You may raise a request via the [One Stop Shop Form](https://digital-one-stop-shop.cabinetoffice.gov.uk/a/catalog/request-items/192) if you require more details on the process.
+
+## **Engineering standards**
+
+Service teams must manage Azure infrastructure using Infrastructure as Code (IaC). Use Terraform and Terragrunt as the primary tools.
+
+### **Using the Cabinet Office GitHub repository**
+
+Store all code for Cabinet Office workloads in the official Cabinet Office GitHub organisation. You can request an account or a new repository through the GitHub access request form.
+
+[GitHub Access Request Form](https://digital-one-stop-shop.cabinetoffice.gov.uk/a/catalog/request-items/96)
+
+### **Why you must use IaC**
+
+You must not manually create resources in the Azure portal for production-track workloads. IaC is required for:
+
+* Reproducibility: ensures environments are identical and can be rebuilt if they fail  
+* Auditability: GitHub provides a version history of all changes  
+* Security: automated pipelines allow for security scanning before resources are created  
+* Disaster recovery: allows for rapid deployment to a secondary region during an outage
+
+
+## **Managing secrets with Azure Key Vault**
+
+You must store all sensitive information in Azure Key Vault. This includes passwords, connection strings, API keys, and SSL certificates. Do not hard-code secrets into source code or configuration files.
+
+### **Why you must use Key Vault**
+
+Using a centralised vault is mandatory for all workloads to:
+
+* prevent secret leakage: Key Vault allows infrastructure to fetch secrets at runtime  
+* centralise management: provides a single location to manage the lifecycle of certificates and keys  
+* improve auditability: the system logs every access request to a secret  
+* ensure security by design: vaults are automatically configured to capture diagnostic logs
+
+### **Implementation standards**
+
+* Integration: use Terraform to provision Key Vaults and manage access policies. Use managed identities to retrieve secrets.  
+* No manual overrides: do not add secrets manually through the Azure portal.  
+* Zero standing access: use privileged identity management (PIM) to control access to secrets.
+
+Request guidance on integrating Key Vault with your pipeline through the One-Stop Shop.
+
+## **Logging, monitoring, and the SOC**
+
+The platform ensures every workload is visible to central security teams.
+
+### **The centralised logging pipeline**
+
+All diagnostic logs follow a specific path:
+
+1. Spoke collection: we capture logs from your subscription resources.  
+2. Hub log analytics workspace: logs stream to a central workspace in the hub subscription.  
+3. Stream: logs are filtered to reduce costs and formatted into a standard schema.  
+4. Destination: the final destination for security telemetry.
+
+### **Security operations centre (SOC)**
+
+The cyber security team uses tools to:
+
+* monitor the Azure estate  
+* respond to incidents by detecting irregular behaviour or configuration changes  
+* generate automated alerts for security breaches
+
+### **Monitoring responsibilities**
+
+Monitoring is a shared responsibility:
+
+* Platform engineering (COPE): manages the Azure hub & log analytics workspace.  
+* Cyber security team: operates the tools used for monitoring outside of Azure and defines security policies.  
+* Service team: monitors the performance and health of your specific application. You must ensure your service meets its operational service level agreements (SLAs).
+
+## **Policies**
+
+For more information, see:
+
+* [Azure sandbox policy](https://digital-handbook.cabinetoffice.gov.uk/docs/cloud/general/sandbox-policy.html)  
+* [Azure recharge policy](https://digital-handbook.cabinetoffice.gov.uk/docs/cloud/azure-cloud/azure-recharge-policy.html)
+
