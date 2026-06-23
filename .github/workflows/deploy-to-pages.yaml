@@ -34,9 +34,9 @@ jobs:
       - name: Build middleman site
         run: bundle exec middleman build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3 # v3.0.1
+        uses: actions/upload-pages-artifact@v5 # v3.0.1
         with:
           path: "build"
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4 # v4.0.4
+        uses: actions/deploy-pages@v5 # v4.0.4

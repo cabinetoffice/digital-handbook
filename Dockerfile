@@ -1,16 +1,20 @@
-FROM ruby:3.1.3-bullseye
+FROM ruby:4.0-slim-bookworm
 
-EXPOSE 4567:4567
-EXPOSE 35729:35729
+EXPOSE 4567
+EXPOSE 35729
 
 WORKDIR /usr/src/gems
 
 COPY ./Gemfile /usr/src/gems
 COPY ./Gemfile.lock /usr/src/gems
 
-RUN apt-get update && apt-get install -y nodejs
+# ADDED: libcurl4 to support html-proofer's parallel link-checking engine
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    nodejs \
+    libcurl4 \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN bundle config set force_ruby_platform true
 RUN bundle install
 RUN bundle check
 
