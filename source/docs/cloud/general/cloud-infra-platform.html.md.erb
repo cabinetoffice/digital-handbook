@@ -121,12 +121,9 @@ If you would like to use Azure to build a new service, you should contact [CO En
 
 # Other platforms and considerations
 
-
 ## Google Cloud (GCP)
 
 You should <span style="text-decoration:underline;">NOT</span> build a digital service in GCP.  However, the use GCP is permitted ONLY under these conditions:
-
-
 
 * for data science that requires some of the advanced GCP tools, including ML/AI and Big query.
 * building Single Sign On integration
@@ -137,14 +134,18 @@ You should <span style="text-decoration:underline;">NOT</span> build a digital s
 
 ## Salesforce
 
-Salesforce should <span style="text-decoration:underline;">NOT</span> be used as a platform for hosting a high-code digital service, unless you have approval from the Cabinet Office Technical Design Authority.
+Salesforce is the strategic customer relationship management (CRM) and low-code or no-code platform for the Cabinet Office.
 
-Salesforce should be used as a customer relation management (CRM) and a case management system (CMS). Should a user facing frontend interface be required, a bespoke solution built on GOV.UK Design System hosted on the above strategic platforms should be considered first, unless you have approval from the Cabinet Office Technical Design Authority.
+You must use the centralised development team and contract for Salesforce development to align with the departmental strategy.
 
-The only exception for using the Salesforce hosting platform is if a simple, static content-page is required as the front page of the Salesforce CRM, where user interaction is minimal; or a simple form to collect information that will be fed into Salesforce.
+If your service requires a user-facing frontend interface, you must use the pre-packaged, GOV.UK Design System (GDS) compliant Salesforce frontend. This ensures your service can be reused and complies with the Public Sector Bodies Accessibility Regulations.
 
-This is because:
+You must restrict custom development using Apex. You must only use Apex by exception, when standard configuration cannot meet your business requirements.
 
+This restriction is necessary because:
+
+* the Salesforce development language, Apex, is proprietary and not a common skill across the Cabinet Office  
+* it is difficult to run automated load tests and penetration tests on highly customised services, which increases costs
 
 
 * the frontend developed in Salesforce Experience does not meet the required standard set in the Public Sector Bodies Accessibility Regulations. However, you can use the Salesforce APEX codes with the GOV.UK Design Systems to meet accessibility requirements
