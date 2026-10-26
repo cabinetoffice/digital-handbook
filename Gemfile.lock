@@ -17,13 +17,11 @@ GEM
       uri (>= 0.13.1)
     addressable (2.9.0)
       public_suffix (>= 2.0.2, < 8.0)
-    afm (1.0.0)
-    async (2.39.0)
+    afm (1.0.1)
+    async (2.46.0)
       console (~> 1.29)
       fiber-annotation
-      io-event (~> 1.11)
-      metrics (~> 0.12)
-      traces (~> 0.18)
+      io-event (~> 1.21)
     autoprefixer-rails (10.4.21.0)
       execjs (~> 2)
     base64 (0.3.0)
@@ -53,7 +51,7 @@ GEM
       sass (>= 3.2, < 3.5)
     concurrent-ruby (1.3.7)
     connection_pool (3.0.2)
-    console (1.36.0)
+    console (1.38.0)
       fiber-annotation
       fiber-local (~> 1.1)
       json
@@ -117,7 +115,7 @@ GEM
     hashery (2.1.2)
     hashie (5.1.0)
       logger
-    html-proofer (5.2.1)
+    html-proofer (5.2.3)
       addressable (~> 2.3)
       async (~> 2.1)
       benchmark (~> 0.5)
@@ -130,8 +128,8 @@ GEM
     http_parser.rb (0.8.1)
     i18n (1.14.8)
       concurrent-ruby (~> 1.0)
-    io-event (1.16.3)
-    json (2.7.2)
+    io-event (1.22.3)
+    json (3.1.0)
     kramdown (2.5.2)
       rexml (>= 3.4.4)
     listen (3.10.0)
@@ -140,7 +138,6 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.10)
     logger (1.7.0)
     memoist (0.16.2)
-    metrics (0.15.0)
     middleman (4.6.3)
       middleman-cli (= 4.6.3)
       middleman-core (= 4.6.3)
@@ -214,11 +211,10 @@ GEM
     padrino-support (0.16.1)
     parallel (1.28.0)
     parslet (2.0.0)
-    pdf-reader (2.15.1)
+    pdf-reader (2.16.0)
       Ascii85 (>= 1.0, < 3.0, != 2.0.0)
       afm (>= 0.2.1, < 2)
       hashery (~> 2.0)
-      ruby-rc4
       ttfunk
     prism (1.9.0)
     public_suffix (7.0.5)
@@ -236,7 +232,6 @@ GEM
     redcarpet (3.6.1)
     rexml (3.4.4)
     rouge (3.30.0)
-    ruby-rc4 (0.1.5)
     sass (3.4.25)
     sass-embedded (1.101.0-arm64-darwin)
       google-protobuf (~> 4.31)
@@ -262,7 +257,6 @@ GEM
     tilt (2.7.0)
     toml (0.3.0)
       parslet (>= 1.8.0, < 3.0.0)
-    traces (0.18.2)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
     typhoeus (1.6.0)
@@ -274,7 +268,7 @@ GEM
     uri (1.1.1)
     webrick (1.9.2)
     yell (2.2.2)
-    zeitwerk (2.8.2)
+    zeitwerk (2.8.3)
 
 PLATFORMS
   arm64-darwin-21
@@ -286,7 +280,7 @@ PLATFORMS
 DEPENDENCIES
   cgi
   govuk_tech_docs
-  html-proofer (~> 5.2.0)
+  html-proofer (~> 5.2.3)
   tzinfo-data
   wdm (~> 0.1.0)
 
